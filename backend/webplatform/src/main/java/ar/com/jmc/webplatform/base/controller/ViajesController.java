@@ -58,7 +58,7 @@ public class ViajesController {
 		}
 	}
 	
-	@PreAuthorize("hasRole('avisorecepcion')")
+	//@PreAuthorize("hasRole('avisorecepcion')")
 	@RequestMapping(value="/aceptar_viaje/{id}/{localidad_id}", method=RequestMethod.GET)
 	public @ResponseBody JsonResult aceptar_viaje(Locale locale, @PathVariable int id, @PathVariable int localidad_id) {
 		DatosEntrega datosEntrega = new DatosEntrega();
