@@ -30,7 +30,6 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 @Controller
-@Transactional
 public class ViajesController {
 	
 	
@@ -80,14 +79,14 @@ public class ViajesController {
 		    
 		    datosEntrega.aceptarEntrega(id,localidad_id,fechaActual,horaActual);  
 		    
-		    Usuario u = usuarioService.getCurrentUser();
-			Log log = new Log();
-			log.setDateMovimiento(new Timestamp(System.currentTimeMillis()));
-			log.setErrorDescrip(String.valueOf(id));
-			log.setIdUsuario(u.getIdUsuario());
-			log.setTipoMovimiento("10");
-			
-			logService.setLog(log);
+//		    Usuario u = usuarioService.getCurrentUser();
+//			Log log = new Log();
+//			log.setDateMovimiento(new Timestamp(System.currentTimeMillis()));
+//			log.setErrorDescrip(String.valueOf(id));
+//			log.setIdUsuario(u.getIdUsuario());
+//			log.setTipoMovimiento("10");
+//			
+//			logService.setLog(log);
 			
 			return new JsonResult(true, "OK");
 		} catch (Exception e) {  
