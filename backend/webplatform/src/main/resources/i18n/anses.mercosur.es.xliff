@@ -1,0 +1,929 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="es" datatype="plaintext" original="" >
+        <body>
+            <group id="registration-new">
+                <trans-unit id="registration">
+                    <source>registration</source>
+                    <target>Empadronamiento</target>
+                </trans-unit>
+                <trans-unit id="travels">
+                    <source>travels</source>
+                    <target>Viajes</target>
+                </trans-unit>
+                <trans-unit id="search">
+                    <source>search</source>
+                    <target>Búsqueda</target>
+                </trans-unit>
+                <trans-unit id="add">
+                    <source>add</source>
+                    <target>Alta</target>
+                </trans-unit>
+                <trans-unit id="export">
+                    <source>export</source>
+                    <target>Exportar</target>
+                </trans-unit>
+                <trans-unit id="import">
+                    <source>import</source>
+                    <target>Importar</target>
+                </trans-unit>
+                <trans-unit id="approve">
+                    <source>approve</source>
+                    <target>Aprobar</target>
+                </trans-unit>
+                <trans-unit id="reports">
+                    <source>reports</source>
+                    <target>Reportes</target>
+                </trans-unit>
+                <trans-unit id="census">
+                    <source>census</source>
+                    <target>Padrón</target>
+                </trans-unit>
+                <trans-unit id="modification">
+                    <source>modification</source>
+                    <target>Modificación</target>
+                </trans-unit>
+                <trans-unit id="online">
+                    <source>online</source>
+                    <target>Online</target>
+                </trans-unit>
+                <trans-unit id="shippingEarrings">
+                    <source>shippingEarrings</source>
+                    <target>Envios Pendientes</target>
+                </trans-unit>
+                <trans-unit id="user">
+                    <source>user</source>
+                    <target>Usuario</target>
+                </trans-unit>
+                <trans-unit id="logout">
+                    <source>logout</source>
+                    <target>Salir</target>
+                </trans-unit>
+                <trans-unit id="home">
+                    <source>home</source>
+                    <target>Inicio</target>
+                </trans-unit>
+                <trans-unit id="correct">
+                    <source>correct</source>
+                    <target>Correcta</target>
+                </trans-unit>
+                <trans-unit id="beneficiaryData">
+                    <source>beneficiaryData</source>
+                    <target>Datos Beneficiario</target>
+                </trans-unit>
+                <trans-unit id="residenceAddress">
+                    <source>residenceAddress</source>
+                    <target>Domicilio de Residencia</target>
+                </trans-unit>
+                <trans-unit id="documentsResidentCountry">
+                    <source>documentsResidentCountry</source>
+                    <target>Documentos País Residente</target>
+                </trans-unit>
+                <trans-unit id="identificationDocuments">
+                    <source>identificationDocuments</source>
+                    <target>Documentos de Identificación</target>
+                </trans-unit>
+                <trans-unit id="benefit">
+                    <source>benefit</source>
+                    <target>Beneficio</target>
+                </trans-unit>
+                <trans-unit id="personaData">
+                    <source>personaData</source>
+                    <target>Datos Personales</target>
+                </trans-unit>
+                <trans-unit id="name">
+                    <source>name</source>
+                    <target>Nombre</target>
+                </trans-unit>
+                <trans-unit id="paternal">
+                    <source>paternal</source>
+                    <target>Paterno</target>
+                </trans-unit>
+                <trans-unit id="surname">
+                    <source>surname</source>
+                    <target>Apellido</target>
+                </trans-unit>
+                <trans-unit id="maternal">
+                    <source>maternal</source>
+                    <target>Materno</target>
+                </trans-unit>
+                <trans-unit id="dateBirth">
+                    <source>dateBirth</source>
+                    <target>Fecha de Nacimiento</target>
+                </trans-unit>
+                <trans-unit id="nationality">
+                    <source>nationality</source>
+                    <target>Nacionalidad</target>
+                </trans-unit>
+                <trans-unit id="civilStatus">
+                    <source>civilStatus</source>
+                    <target>Estado Civil</target>
+                </trans-unit>
+                <trans-unit id="domicile">
+                    <source>domicile</source>
+                    <target>Domicilio</target>
+                </trans-unit>
+                <trans-unit id="street">
+                    <source>street</source>
+                    <target>Calle</target>
+                </trans-unit>
+                <trans-unit id="number">
+                    <source>number</source>
+                    <target>Número</target>
+                </trans-unit>
+                <trans-unit id="floor">
+                    <source>floor</source>
+                    <target>Piso</target>
+                </trans-unit>
+                <trans-unit id="sex">
+                    <source>sex</source>
+                    <target>Sexo</target>
+                </trans-unit>
+                <trans-unit id="apartment">
+                    <source>apartment</source>
+                    <target>Apartamento</target>
+                </trans-unit>
+                <trans-unit id="postcode">
+                    <source>postcode</source>
+                    <target>Código Postal</target>
+                </trans-unit>
+                <trans-unit id="locality">
+                    <source>locality</source>
+                    <target>Localidad</target>
+                </trans-unit>
+                <trans-unit id="province">
+                    <source>province</source>
+                    <target>Provincia</target>
+                </trans-unit>
+                <trans-unit id="department">
+                    <source>department</source>
+                    <target>Departamento</target>
+                </trans-unit>
+                <trans-unit id="country">
+                    <source>country</source>
+                    <target>País</target>
+                </trans-unit>
+                <trans-unit id="phone">
+                    <source>phone</source>
+                    <target>Teléfono</target>
+                </trans-unit>
+                <trans-unit id="email">
+                    <source>email</source>
+                    <target>Email</target>
+                </trans-unit>
+                <trans-unit id="idDocumentsCountryResidence">
+                    <source>idDocumentsCountryResidence</source>
+                    <target>Documentos de Identificación en el país de residencia</target>
+                </trans-unit>
+                <trans-unit id="documentType">
+                    <source>documentType</source>
+                    <target>Tipo de Documento</target>
+                </trans-unit>
+                <trans-unit id="documentNumber">
+                    <source>documentNumber</source>
+                    <target>Número de Documento</target>
+                </trans-unit>
+                <trans-unit id="issueDate">
+                    <source>issueDate</source>
+                    <target>Fecha de Emisión</target>
+                </trans-unit>
+                <trans-unit id="numberEnrollment">
+                    <source>numberEnrollment</source>
+                    <target>Número de Inscripción</target>
+                </trans-unit>
+                <trans-unit id="enrollmentAgency">
+                    <source>enrollmentAgency</source>
+                    <target>Organismo de Inscripción</target>
+                </trans-unit>
+                <trans-unit id="action">
+                    <source>action</source>
+                    <target>Acción</target>
+                </trans-unit>
+                <trans-unit id="idDocumentsPayingCountry">
+                    <source>idDocumentsPayingCountry</source>
+                    <target>Documentos de Identificación en el país pagador</target>
+                </trans-unit>
+                <trans-unit id="lending">
+                    <source>lending</source>
+                    <target>Prestación</target>
+                </trans-unit>
+                <trans-unit id="numberBenefit">
+                    <source>numberBenefit</source>
+                    <target>Número de Beneficio</target>
+                </trans-unit>
+                <trans-unit id="save">
+                    <source>save</source>
+                    <target>Guardar</target>
+                </trans-unit>
+                <trans-unit id="cancel">
+                    <source>cancel</source>
+                    <target>Cancelar</target>
+                </trans-unit>
+                <trans-unit id="new">
+                    <source>new</source>
+                    <target>Nuevo</target>
+                </trans-unit>
+                <trans-unit id="back">
+                    <source>back</source>
+                    <target>Volver</target>
+                </trans-unit>
+            </group>
+            <group id="registration-search">
+                <trans-unit id="registration">
+                    <source>registration</source>
+                    <target>Empadronamiento</target>
+                </trans-unit>
+                <trans-unit id="search">
+                    <source>search</source>
+                    <target>Búsqueda</target>
+                </trans-unit>
+                <trans-unit id="add">
+                    <source>add</source>
+                    <target>Alta</target>
+                </trans-unit>
+                <trans-unit id="export">
+                    <source>export</source>
+                    <target>Exportar</target>
+                </trans-unit>
+                <trans-unit id="import">
+                    <source>import</source>
+                    <target>Importar</target>
+                </trans-unit>
+                <trans-unit id="approve">
+                    <source>approve</source>
+                    <target>Aprobar</target>
+                </trans-unit>
+                <trans-unit id="reports">
+                    <source>reports</source>
+                    <target>Reportes</target>
+                </trans-unit>
+                <trans-unit id="census">
+                    <source>census</source>
+                    <target>Padrón</target>
+                </trans-unit>
+                <trans-unit id="modification">
+                    <source>modification</source>
+                    <target>Modificación</target>
+                </trans-unit>
+                <trans-unit id="online">
+                    <source>online</source>
+                    <target>Online</target>
+                </trans-unit>
+                <trans-unit id="shippingEarrings">
+                    <source>shippingEarrings</source>
+                    <target>Envios Pendientes</target>
+                </trans-unit>
+                <trans-unit id="user">
+                    <source>user</source>
+                    <target>Usuario</target>
+                </trans-unit>
+                <trans-unit id="logout">
+                    <source>logout</source>
+                    <target>Salir</target>
+                </trans-unit>
+                <trans-unit id="home">
+                    <source>home</source>
+                    <target>Inicio</target>
+                </trans-unit>
+                <trans-unit id="name">
+                    <source>name</source>
+                    <target>Nombre</target>
+                </trans-unit>
+                <trans-unit id="paternal">
+                    <source>paternal</source>
+                    <target>Paterno</target>
+                </trans-unit>
+                <trans-unit id="surname">
+                    <source>surname</source>
+                    <target>Apellido</target>
+                </trans-unit>
+                <trans-unit id="maternal">
+                    <source>maternal</source>
+                    <target>Materno</target>
+                </trans-unit>
+                <trans-unit id="countryDocumentation">
+                    <source>countryDocumentation</source>
+                    <target>País Documentación</target>
+                </trans-unit>
+                <trans-unit id="documentType">
+                    <source>documentType</source>
+                    <target>Tipo de Documento</target>
+                </trans-unit>
+                <trans-unit id="documentNumber">
+                    <source>documentNumber</source>
+                    <target>Número de Documento</target>
+                </trans-unit>
+                <trans-unit id="dateEntry">
+                    <source>dateEntry</source>
+                    <target>Fecha de Alta</target>
+                </trans-unit>
+                <trans-unit id="searchFor">
+                    <source>searchFor</source>
+                    <target>Buscar</target>
+                </trans-unit>
+                <trans-unit id="searchResults">
+                    <source>SearchResults</source>
+                    <target>Resultados de la Búsqueda</target>
+                </trans-unit>
+                <trans-unit id="dataBenefit">
+                    <source>dataBenefit</source>
+                    <target>Datos del Beneficiario</target>
+                </trans-unit>
+                <trans-unit id="personaData">
+                    <source>personaData</source>
+                    <target>Datos Personales</target>
+                </trans-unit>
+                <trans-unit id="documentsResidentCountry">
+                    <source>documentsResidentCountry</source>
+                    <target>Documentos País Residente</target>
+                </trans-unit>
+                <trans-unit id="identificationDocuments">
+                    <source>identificationDocuments</source>
+                    <target>Documentos de Identificación</target>
+                </trans-unit>
+                <trans-unit id="benefits">
+                    <source>benefits</source>
+                    <target>Beneficios</target>
+                </trans-unit>
+                <trans-unit id="links">
+                    <source>links</source>
+                    <target>Vínculos</target>
+                </trans-unit>
+                <trans-unit id="sex">
+                    <source>sex</source>
+                    <target>Sexo</target>
+                </trans-unit>
+                <trans-unit id="dateBirth">
+                    <source>dateBirth</source>
+                    <target>Fecha de Nacimiento</target>
+                </trans-unit>
+                <trans-unit id="nationality">
+                    <source>nationality</source>
+                    <target>Nacionalidad</target>
+                </trans-unit>
+                <trans-unit id="civilStatus">
+                    <source>civilStatus</source>
+                    <target>Estado Civil</target>
+                </trans-unit>
+                <trans-unit id="dateDeath">
+                    <source>dateDeath</source>
+                    <target>Fecha de Fallecimiento</target>
+                </trans-unit>
+                <trans-unit id="cancel">
+                    <source>cancel</source>
+                    <target>Cancelar</target>
+                </trans-unit>
+                <trans-unit id="residenceAddress">
+                    <source>residenceAddress</source>
+                    <target>Domicilio de Residencia</target>
+                </trans-unit>
+                <trans-unit id="street">
+                    <source>street</source>
+                    <target>Calle</target>
+                </trans-unit>
+                <trans-unit id="number">
+                    <source>number</source>
+                    <target>Número</target>
+                </trans-unit>
+                <trans-unit id="floor">
+                    <source>floor</source>
+                    <target>Piso</target>
+                </trans-unit>
+                <trans-unit id="apartment">
+                    <source>apartment</source>
+                    <target>Apartamento</target>
+                </trans-unit>
+                <trans-unit id="postcode">
+                    <source>postcode</source>
+                    <target>Código Postal</target>
+                </trans-unit>
+                <trans-unit id="locality">
+                    <source>locality</source>
+                    <target>Localidad</target>
+                </trans-unit>
+                <trans-unit id="province">
+                    <source>province</source>
+                    <target>Provincia</target>
+                </trans-unit>
+                <trans-unit id="department">
+                    <source>department</source>
+                    <target>Departamento</target>
+                </trans-unit>
+                <trans-unit id="country">
+                    <source>country</source>
+                    <target>País</target>
+                </trans-unit>
+                <trans-unit id="phone">
+                    <source>phone</source>
+                    <target>Teléfono</target>
+                </trans-unit>
+                <trans-unit id="email">
+                    <source>email</source>
+                    <target>Email</target>
+                </trans-unit>
+                <trans-unit id="idDocumentsCountryResidence">
+                    <source>idDocumentsCountryResidence</source>
+                    <target>Documentos de Identificación en el país de residencia</target>
+                </trans-unit>
+                <trans-unit id="issueDate">
+                    <source>issueDate</source>
+                    <target>Fecha de Emisión</target>
+                </trans-unit>
+                <trans-unit id="lending">
+                    <source>lending</source>
+                    <target>Prestación</target>
+                </trans-unit>
+                <trans-unit id="numberBenefit">
+                    <source>numberBenefit</source>
+                    <target>Número de Beneficio</target>
+                </trans-unit>
+                <trans-unit id="payingCountry">
+                    <source>payingCountry</source>
+                    <target>País pagador</target>
+                </trans-unit>
+                <trans-unit id="countryManager">
+                    <source>countryManager</source>
+                    <target>País Gestor</target>
+                </trans-unit>
+                <trans-unit id="dateEntry">
+                    <source>dateEntry</source>
+                    <target>Fecha de Alta</target>
+                </trans-unit>
+                <trans-unit id="status">
+                    <source>status</source>
+                    <target>Estado</target>
+                </trans-unit>
+                <trans-unit id="benefit">
+                    <source>benefit</source>
+                    <target>Beneficio</target>
+                </trans-unit>
+                <trans-unit id="date">
+                    <source>date</source>
+                    <target>Fecha</target>
+                </trans-unit>
+                <trans-unit id="motive">
+                    <source>motive</source>
+                    <target>Motivo</target>
+                </trans-unit>
+                <trans-unit id="close">
+                    <source>close</source>
+                    <target>Cerrar</target>
+                </trans-unit>
+                <trans-unit id="changeData">
+                    <source>changeData</source>
+                    <target>Modificar Datos</target>
+                </trans-unit>
+                <trans-unit id="residenceData">
+                    <source>residenceData</source>
+                    <target>Datos de Residencia</target>
+                </trans-unit>
+                <trans-unit id="domicile">
+                    <source>domicile</source>
+                    <target>Domicilio</target>
+                </trans-unit>
+                <trans-unit id="registrationNumber">
+                    <source>registrationNumber</source>
+                    <target>Número de Inscripción</target>
+                </trans-unit>
+                <trans-unit id="registerOrganism">
+                    <source>registerOrganism</source>
+                    <target>Organismo de Inscripción</target>
+                </trans-unit>
+                <trans-unit id="action">
+                    <source>action</source>
+                    <target>Acción</target>
+                </trans-unit>
+                <trans-unit id="idDocumentsPayingCountry">
+                    <source>idDocumentsPayingCountry</source>
+                    <target>Documentos de Identificación en el país pagador</target>
+                </trans-unit>
+                <trans-unit id="terminating">
+                    <source>terminating</source>
+                    <target>Dar de Baja</target>
+                </trans-unit>
+                <trans-unit id="change">
+                    <source>change</source>
+                    <target>Modificar</target>
+                </trans-unit>
+                <trans-unit id="reject">
+                    <source>reject</source>
+                    <target>Rechazar</target>
+                </trans-unit>
+                <trans-unit id="reasonsRejection">
+                    <source>reasonsRejection</source>
+                    <target>Motivos de Rechazo</target>
+                </trans-unit>
+                <trans-unit id="detailReason">
+                    <source>detailReason</source>
+                    <target>Detalle motivo</target>
+                </trans-unit>
+            </group>
+            <group id="export-import">
+                <trans-unit id="registration">
+                    <source>registration</source>
+                    <target>Empadronamiento</target>
+                </trans-unit>
+                <trans-unit id="search">
+                    <source>search</source>
+                    <target>Búsqueda</target>
+                </trans-unit>
+                <trans-unit id="add">
+                    <source>add</source>
+                    <target>Alta</target>
+                </trans-unit>
+                <trans-unit id="export">
+                    <source>export</source>
+                    <target>Exportar</target>
+                </trans-unit>
+                <trans-unit id="import">
+                    <source>import</source>
+                    <target>Importar</target>
+                </trans-unit>
+                <trans-unit id="approve">
+                    <source>approve</source>
+                    <target>Aprobar</target>
+                </trans-unit>
+                <trans-unit id="reports">
+                    <source>reports</source>
+                    <target>Reportes</target>
+                </trans-unit>
+                <trans-unit id="census">
+                    <source>census</source>
+                    <target>Padrón</target>
+                </trans-unit>
+                <trans-unit id="modification">
+                    <source>modification</source>
+                    <target>Modificación</target>
+                </trans-unit>
+                <trans-unit id="online">
+                    <source>online</source>
+                    <target>Online</target>
+                </trans-unit>
+                <trans-unit id="shippingEarrings">
+                    <source>shippingEarrings</source>
+                    <target>Envios Pendientes</target>
+                </trans-unit>
+                <trans-unit id="user">
+                    <source>user</source>
+                    <target>Usuario</target>
+                </trans-unit>
+                <trans-unit id="logout">
+                    <source>logout</source>
+                    <target>Salir</target>
+                </trans-unit>
+                <trans-unit id="home">
+                    <source>home</source>
+                    <target>Inicio</target>
+                </trans-unit>
+                <trans-unit id="selectActionPerform">
+                    <source>selectActionPerform</source>
+                    <target>Seleccione la accion a realizar</target>
+                </trans-unit>
+                <trans-unit id="selectFileImport">
+                    <source>selectFileImport</source>
+                    <target>Seleccione archivo a Importar</target>
+                </trans-unit>
+                <trans-unit id="delete">
+                    <source>delete</source>
+                    <target>Eliminar</target>
+                </trans-unit>
+                <trans-unit id="review">
+                    <source>review</source>
+                    <target>Examinar</target>
+                </trans-unit>
+                <trans-unit id="change">
+                    <source>change</source>
+                    <target>Modificar</target>
+                </trans-unit>
+                <trans-unit id="selectTypeExportPadron">
+                    <source>selectTypeExportPadron</source>
+                    <target>Seleccione el tipo de padron a exportar</target>
+                </trans-unit>
+                <trans-unit id="managed">
+                    <source>managed</source>
+                    <target>Gestionado</target>
+                </trans-unit>
+                <trans-unit id="paid">
+                    <source>paid</source>
+                    <target>Pagado</target>
+                </trans-unit>
+                <trans-unit id="cancel">
+                    <source>cancel</source>
+                    <target>Cancelar</target>
+                </trans-unit>
+                <trans-unit id="importedExportedFiles">
+                    <source>importedExportedFiles</source>
+                    <target>Archivos Importados / Exportados</target>
+                </trans-unit>
+                <trans-unit id="description">
+                    <source>description</source>
+                    <target>Descripción</target>
+                </trans-unit>
+                <trans-unit id="actions">
+                    <source>actions</source>
+                    <target>Acciones</target>
+                </trans-unit>
+            </group>
+            <group id="padron-report">
+                <trans-unit id="registration">
+                    <source>registration</source>
+                    <target>Empadronamiento</target>
+                </trans-unit>
+                <trans-unit id="search">
+                    <source>search</source>
+                    <target>Búsqueda</target>
+                </trans-unit>
+                <trans-unit id="add">
+                    <source>add</source>
+                    <target>Alta</target>
+                </trans-unit>
+                <trans-unit id="export">
+                    <source>export</source>
+                    <target>Exportar</target>
+                </trans-unit>
+                <trans-unit id="import">
+                    <source>import</source>
+                    <target>Importar</target>
+                </trans-unit>
+                <trans-unit id="approve">
+                    <source>approve</source>
+                    <target>Aprobar</target>
+                </trans-unit>
+                <trans-unit id="reports">
+                    <source>reports</source>
+                    <target>Reportes</target>
+                </trans-unit>
+                <trans-unit id="census">
+                    <source>census</source>
+                    <target>Padrón</target>
+                </trans-unit>
+                <trans-unit id="modification">
+                    <source>modification</source>
+                    <target>Modificación</target>
+                </trans-unit>
+                <trans-unit id="online">
+                    <source>online</source>
+                    <target>Online</target>
+                </trans-unit>
+                <trans-unit id="user">
+                    <source>user</source>
+                    <target>Usuario</target>
+                </trans-unit>
+                <trans-unit id="logout">
+                    <source>logout</source>
+                    <target>Salir</target>
+                </trans-unit>
+                <trans-unit id="home">
+                    <source>home</source>
+                    <target>Inicio</target>
+                </trans-unit>
+                <trans-unit id="shippingEarrings">
+                    <source>shippingEarrings</source>
+                    <target>Envios Pendientes</target>
+                </trans-unit>
+                <trans-unit id="padronReport">
+                    <source>padronReport</source>
+                    <target>Reportes Padrón</target>
+                </trans-unit>
+                <trans-unit id="status">
+                    <source>status</source>
+                    <target>Estado</target>
+                </trans-unit>
+                <trans-unit id="benefit">
+                    <source>benefit</source>
+                    <target>Beneficio</target>
+                </trans-unit>
+                <trans-unit id="beneficiary">
+                    <source>beneficiary</source>
+                    <target>Beneficiario</target>
+                </trans-unit>
+                <trans-unit id="dateEntryFrom">
+                    <source>dateEntryFrom</source>
+                    <target>Fecha Alta Desde</target>
+                </trans-unit>
+                <trans-unit id="dateEntryTo">
+                    <source>dateEntryTo</source>
+                    <target>Fecha Alta Hasta</target>
+                </trans-unit>
+                <trans-unit id="liquidationDateFrom">
+                    <source>liquidationDateFrom</source>
+                    <target>Fecha Liquidación Desde</target>
+                </trans-unit>
+                <trans-unit id="liquidationDateTo">
+                    <source>liquidationDateTo</source>
+                    <target>Fecha Liquidación Hasta</target>
+                </trans-unit>
+                <trans-unit id="searchFor">
+                    <source>searchFor</source>
+                    <target>Buscar</target>
+                </trans-unit>
+                <trans-unit id="cancel">
+                    <source>cancel</source>
+                    <target>Cancelar</target>
+                </trans-unit>
+            </group>
+            <group id="shipping-pending">
+                <trans-unit id="registration">
+                    <source>registration</source>
+                    <target>Empadronamiento</target>
+                </trans-unit>
+                <trans-unit id="search">
+                    <source>search</source>
+                    <target>Búsqueda</target>
+                </trans-unit>
+                <trans-unit id="add">
+                    <source>add</source>
+                    <target>Alta</target>
+                </trans-unit>
+                <trans-unit id="export">
+                    <source>export</source>
+                    <target>Exportar</target>
+                </trans-unit>
+                <trans-unit id="import">
+                    <source>import</source>
+                    <target>Importar</target>
+                </trans-unit>
+                <trans-unit id="approve">
+                    <source>approve</source>
+                    <target>Aprobar</target>
+                </trans-unit>
+                <trans-unit id="reports">
+                    <source>reports</source>
+                    <target>Reportes</target>
+                </trans-unit>
+                <trans-unit id="census">
+                    <source>census</source>
+                    <target>Padrón</target>
+                </trans-unit>
+                <trans-unit id="modification">
+                    <source>modification</source>
+                    <target>Modificación</target>
+                </trans-unit>
+                <trans-unit id="online">
+                    <source>online</source>
+                    <target>Online</target>
+                </trans-unit>
+                <trans-unit id="user">
+                    <source>user</source>
+                    <target>Usuario</target>
+                </trans-unit>
+                <trans-unit id="logout">
+                    <source>logout</source>
+                    <target>Salir</target>
+                </trans-unit>
+                <trans-unit id="home">
+                    <source>home</source>
+                    <target>Inicio</target>
+                </trans-unit>
+                <trans-unit id="shippingEarrings">
+                    <source>shippingEarrings</source>
+                    <target>Envios Pendientes</target>
+                </trans-unit>
+                <trans-unit id="padronReport">
+                    <source>padronReport</source>
+                    <target>Reportes Padrón</target>
+                </trans-unit>
+                <trans-unit id="correctDispatch">
+                    <source>correctDispatch</source>
+                    <target>Envío correcto</target>
+                </trans-unit>
+                <trans-unit id="selectTypeActionSearch">
+                    <source>selectTypeActionSearch</source>
+                    <target>Seleccione el tipo de acción a buscar</target>
+                </trans-unit>
+                <trans-unit id="selectSearchType">
+                    <source>selectSearchType</source>
+                    <target>Seleccione el tipo de búsqueda</target>
+                </trans-unit>
+                <trans-unit id="country">
+                    <source>country</source>
+                    <target>País</target>
+                </trans-unit>
+                <trans-unit id="oiss">
+                    <source>oiss</source>
+                    <target>OISS</target>
+                </trans-unit>
+                <trans-unit id="cancel">
+                    <source>cancel</source>
+                    <target>Cancelar</target>
+                </trans-unit>
+                <trans-unit id="searchFor">
+                    <source>searchFor</source>
+                    <target>Buscar</target>
+                </trans-unit>
+                <trans-unit id="searchResults">
+                    <source>SearchResults</source>
+                    <target>Resultados de la Búsqueda</target>
+                </trans-unit>
+                <trans-unit id="send">
+                    <source>send</source>
+                    <target>Enviar</target>
+                </trans-unit>
+            </group>
+            <group id="dashboard">
+                <trans-unit id="registration">
+                    <source>registration</source>
+                    <target>Empadronamiento</target>
+                </trans-unit>
+                 <trans-unit id="travels">
+                    <source>travels</source>
+                    <target>Viajes</target>
+                </trans-unit>
+                <trans-unit id="search">
+                    <source>search</source>
+                    <target>Búsqueda</target>
+                </trans-unit>
+                <trans-unit id="add">
+                    <source>add</source>
+                    <target>Alta</target>
+                </trans-unit>
+                <trans-unit id="export">
+                    <source>export</source>
+                    <target>Exportar</target>
+                </trans-unit>
+                <trans-unit id="import">
+                    <source>import</source>
+                    <target>Importar</target>
+                </trans-unit>
+                <trans-unit id="approve">
+                    <source>approve</source>
+                    <target>Aprobar</target>
+                </trans-unit>
+                <trans-unit id="reports">
+                    <source>reports</source>
+                    <target>Reportes</target>
+                </trans-unit>
+                <trans-unit id="census">
+                    <source>census</source>
+                    <target>Padrón</target>
+                </trans-unit>
+                <trans-unit id="modification">
+                    <source>modification</source>
+                    <target>Modificación</target>
+                </trans-unit>
+                <trans-unit id="online">
+                    <source>online</source>
+                    <target>Online</target>
+                </trans-unit>
+                <trans-unit id="user">
+                    <source>user</source>
+                    <target>Usuario</target>
+                </trans-unit>
+                <trans-unit id="logout">
+                    <source>logout</source>
+                    <target>Salir</target>
+                </trans-unit>
+                <trans-unit id="home">
+                    <source>home</source>
+                    <target>Inicio</target>
+                </trans-unit>
+                <trans-unit id="shippingEarrings">
+                    <source>shippingEarrings</source>
+                    <target>Envios Pendientes</target>
+                </trans-unit>
+                <trans-unit id="padronReport">
+                    <source>padronReport</source>
+                    <target>Reportes Padrón</target>
+                </trans-unit>
+                <trans-unit id="welcomeSiaci">
+                    <source>welcomeSiaci</source>
+                    <target>Bienvenido a SIACI</target>
+                </trans-unit>
+                <trans-unit id="youHave">
+                    <source>youHave</source>
+                    <target>Le quedan</target>
+                </trans-unit>
+            </group>
+            <group id="login">
+                <trans-unit id="usernameOrPasswordIncorrect">
+                    <source>usernameOrPasswordIncorrect</source>
+                    <target>Nombre de usuario o contraseña incorrectos</target>
+                </trans-unit>
+                <trans-unit id="signSiaci">
+                    <source>signSiaci</source>
+                    <target>Ingresar a SIACI</target>
+                </trans-unit>
+                <trans-unit id="neverMind">
+                    <source>neverMind</source>
+                    <target>No se preocupe</target>
+                </trans-unit>
+                <trans-unit id="sendMeBackSignInScreen">
+                    <source>sendMeBackSignInScreen</source>
+                    <target>Enviarme de vuelta a la pantalla de inicio de sesión</target>
+                </trans-unit>
+                <trans-unit id="signIn">
+                    <source>signIn</source>
+                    <target>Ingresar</target>
+                </trans-unit>
+                <trans-unit id="user">
+                    <source>user</source>
+                    <target>Usuario</target>
+                </trans-unit>
+                <trans-unit id="password">
+                    <source>password</source>
+                    <target>Contraseña</target>
+                </trans-unit>
+            </group>
+        </body>
+    </file>
+</xliff>

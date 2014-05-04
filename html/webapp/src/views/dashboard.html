@@ -1,0 +1,82 @@
+
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+	<div class="navbar-inner">
+
+
+		<ul class="nav navbar-nav" id="mobile-nav">
+
+			<li class="dropdown"><a data-toggle="dropdown"
+				class="dropdown-toggle" href="#"><span
+					class="glyphicon glyphicon-th"></span> {{i18n.travels}} <b
+					class="caret"></b></a>
+				<ul class="dropdown-menu">
+					<li><a href="index.html#/viaje">{{i18n.search}}</a></li>
+				</ul></li>
+
+		</ul>
+		<ul class="nav navbar-nav user_menu pull-right"
+			ng-controller="IdiomaController">
+
+			<li class="divider-vertical hidden-sm hidden-xs"></li>
+			<li class="dropdown"><a href="#"
+				class="dropdown-toggle nav_condensed" data-toggle="dropdown"><i
+					class="{{defaultLanguage.flag}}"></i> <b class="caret"></b></a>
+				<ul class="dropdown-menu" ng-repeat="lang in othersLanguages">
+					<li><a ng-click="changeLanguage(lang.abrev)"><i
+							class="{{lang.flag}}"></i> {{lang.tag}}</a></li>
+				</ul></li>
+			<li class="divider-vertical hidden-sm hidden-xs"></li>
+			<li class="dropdown"><a href="#" class="dropdown-toggle"
+				data-toggle="dropdown"><img src="src/img/user_avatar.png" alt=""
+					class="user_avatar">{{i18n.user}} <b class="caret"></b></a>
+				<ul class="dropdown-menu">
+
+					<li><a href="index.html#/login">{{i18n.logout}}</a></li>
+				</ul></li>
+		</ul>
+	</div>
+
+</nav>
+
+
+<div id="contentwrapper">
+	<div class="main_content">
+		<div id="jCrumbs" class="breadCrumb module">
+			<ul>
+				<li><a href="index.html#/dashboard"><i
+						class="glyphicon glyphicon-home"></i></a></li>
+				<li><a href="index.html#/dashboard">Aviso de recepción de unidades</a></li>
+
+			</ul>
+		</div>
+		<div class="formSep">
+			<div class="row">
+				<div class="col-sm-2 col-md-2">
+					<label>Ingrese el Nro de Equipo a Buscar </label> <input
+						type="number" class="form-control" placeholder="Nro de Equipo" id = "idNroEquipo">
+					<br>
+					<button class="btn btn-success" type="submit" ng-click="buscar()">
+						Buscar</button>
+				</div>
+
+			</div>
+			<div class="row">
+				<div class="col-sm-4 col-md-4">
+					<label>Viajes </label> <select ng-model="itemSelected"
+						
+														ng-options="v.nroViaje as v.viajeLocalidad for v in viajes" >
+					</select>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-sm-2 col-md-2">
+					<br>
+					<button class="btn btn-success" type="submit" ng-click="aceptarViaje()">
+						Aceptar Viaje</button>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>

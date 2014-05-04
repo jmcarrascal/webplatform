@@ -1,0 +1,76 @@
+				<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+					<div class="navbar-inner">
+						<div class="container">
+
+							<ul class="nav navbar-nav" id="mobile-nav">
+
+								<li class="dropdown">
+									<a data-toggle="dropdown" class="dropdown-toggle" href="#"><span class="glyphicon glyphicon-th"></span> Empadronamiento <b class="caret"></b></a>
+									<ul class="dropdown-menu">
+										<li>
+											<a href="siaci.html#/busqueda">Busqueda</a>
+										</li>
+										<li ng-show="isUserInRole('USER_G')">
+											<a href="siaci.html#/alta">Alta</a>
+										</li>
+										<li>
+											<a href="siaci.html#/busqueda">Modificacion Online</a>
+										</li>
+										<li>
+											<a href="siaci.html#/exportarImportar"> Exportar / Importar</a>
+										</li>
+
+										<li >
+											<a href="siaci.html#/busqueda">Aprobar Alta </a>
+
+										</li>
+										<li class="dropdown">
+											<a href="#"> Reportes <b class="caret-right"></b></a>
+											<ul class="dropdown-menu">
+												<li>
+													<a href="siaci.html#/padron">Padron</a>
+												</li>
+												<li>
+													<a href="repo_mod.html">Modificacion</a>
+												</li>
+												<li>
+													<a href="repo_empadronamieto.html">Empadronamiento</a>
+												</li>
+											</ul>
+										</li>
+
+										<li >
+											<a href="siaci.html#/pendienteEnvios">Envio pendientes</a>
+
+										</li>
+
+									</ul>
+								</li>
+
+							</ul>
+							    <ul class="nav navbar-nav user_menu pull-right" ng-controller="IdiomaController">
+
+								<li class="divider-vertical hidden-sm hidden-xs"></li>
+								<li class="dropdown">
+									<a href="#" class="dropdown-toggle nav_condensed" data-toggle="dropdown"><i  ng-class="flagSelect" class="flag-ar"></i> <b class="caret"></b></a>
+									<ul class="dropdown-menu">
+										<li>
+											<a href="javascript:void(0)" ng-click="changeIdioma()"><i ng-class="flag" class="flag-br"></i> {{idiomaNoSelect}}</a>
+										</li>
+
+									</ul>
+								</li>
+								<li class="divider-vertical hidden-sm hidden-xs"></li>
+								<li class="dropdown">
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="src/img/user_avatar.png" alt="" class="user_avatar">Usuario <b class="caret"></b></a>
+									<ul class="dropdown-menu">
+
+										<li>
+											<a href="index.html#/login">Salir</a>
+										</li>
+									</ul>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</nav>

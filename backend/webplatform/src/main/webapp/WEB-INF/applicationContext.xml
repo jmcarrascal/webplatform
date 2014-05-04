@@ -1,0 +1,128 @@
+<?xml  version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:ws="http://jax-ws.dev.java.net/spring/core" xmlns:wss="http://jax-ws.dev.java.net/spring/servlet"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jee="http://www.springframework.org/schema/jee" xmlns:lang="http://www.springframework.org/schema/lang"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:util="http://www.springframework.org/schema/util" xmlns:security="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd
+		http://www.springframework.org/schema/lang http://www.springframework.org/schema/lang/spring-lang.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+		http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+         http://jax-ws.dev.java.net/spring/core
+        http://jax-ws.dev.java.net/spring/core.xsd
+        http://jax-ws.dev.java.net/spring/servlet
+        http://jax-ws.dev.java.net/spring/servlet.xsd
+        http://www.springframework.org/schema/security 
+			http://www.springframework.org/schema/security/spring-security-3.1.xsd">
+	
+
+	<!-- Importa configuracion i18n -->
+	<import resource="applicationContextI18N.xml" />
+	
+	<import resource="applicationContextDataSource.xml" />
+	
+	<!-- Multipart resolver para upload de archivos por servicio rest -->
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize" value="5000000" />
+		<property name="maxInMemorySize" value="5000000" />
+	</bean>
+
+	<!-- Hibernate session factory -->
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+
+		<property name="hibernateProperties">
+			<props>
+
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+				<prop key="hibernate.show_sql">false</prop>
+				<prop key="hibernate.use_sql_comments">false</prop>
+				<prop key="hibernate.hbm2ddl.auto">none</prop>
+
+				<prop key="hibernate.format_sql">true</prop>
+				<prop key="hibernate.generate_statistics">true</prop>
+
+				<prop key="hibernate.cache.provider_class">net.sf.ehcache.hibernate.EhCacheProvider</prop>
+			</props>
+		</property>
+		<property name="annotatedClasses">
+			<list>
+				<value>ar.com.jmc.webplatform.base.model.Log</value>
+				<value>ar.com.jmc.webplatform.base.model.Usuario</value>
+			</list>
+		</property>
+
+	</bean>
+
+	<context:annotation-config />
+
+	<context:component-scan base-package="ar.com.jmc.webplatform.base" />
+
+	<bean id="jspViewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="viewClass"
+			value="org.springframework.web.servlet.view.JstlView" />
+		<property name="prefix" value="/WEB-INF/jsp/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+
+
+	<tx:annotation-driven transaction-manager="transactionManager" />
+
+	<mvc:annotation-driven />
+
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+
+	<security:global-method-security
+		pre-post-annotations="enabled" />
+
+	<security:authentication-manager id="authenticationManager">
+		<security:authentication-provider>
+			<security:jdbc-user-service
+				data-source-ref="dataSource" id="userService"
+				users-by-username-query="SELECT username, password, 1 AS enabled FROM usuario WHERE username = ?"
+				authorities-by-username-query="select u.username, ro.nombre from usuario u, operadorro r, rol ro where r.idRol = ro.idRol and u.idusuario = r.idoperador and u.username = ?" />
+		</security:authentication-provider>
+	</security:authentication-manager>
+
+	<security:http realm="Protected API" use-expressions="true"
+		auto-config="false" create-session="stateless" entry-point-ref="unauthorizedEntryPoint"
+		authentication-manager-ref="authenticationManager">
+		<security:custom-filter ref="authenticationTokenProcessingFilter"
+			position="FORM_LOGIN_FILTER" />
+	</security:http>
+
+	<!-- Use a Md5 encoder since the user's passwords are stored as Md5 in the 
+		database -->
+	<bean
+		class="org.springframework.security.authentication.encoding.Md5PasswordEncoder"
+		id="passwordEncoder" />
+
+
+
+	<bean
+		class="ar.com.jmc.webplatform.security.filter.AuthenticationTokenProcessingFilter"
+		id="authenticationTokenProcessingFilter">
+		<constructor-arg ref="authenticationManager" />
+		<constructor-arg ref="userService" />
+	</bean>
+
+	<bean id="unauthorizedEntryPoint" class="ar.com.jmc.webplatform.security.UnauthorizedEntryPoint" />
+
+
+</beans>

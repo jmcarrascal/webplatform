@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<i18n>
+    <language>
+        <tag>Español</tag>
+        <abrev>es</abrev>
+        <flag>flag-ar</flag>
+        <default></default>
+    </language>
+    <language>
+        <tag>Portugues</tag>
+        <abrev>pt</abrev>
+        <flag>flag-br</flag>
+        <default>false</default>
+    </language>
+</i18n>

@@ -1,0 +1,931 @@
+
+				<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+					<div class="navbar-inner">
+						
+
+							<ul class="nav navbar-nav" id="mobile-nav">
+
+								<li class="dropdown">
+									<a data-toggle="dropdown" class="dropdown-toggle" href="#"><span class="glyphicon glyphicon-th"></span> {{i18n.registration}} <b class="caret"></b></a>
+									<ul class="dropdown-menu">
+										<li>
+											<a href="index.html#/busqueda">{{i18n.search}}</a>
+										</li>
+										<li ng-show="isUserInRole('USER_G')">
+											<a href="index.html#/alta">{{i18n.add}}</a>
+										</li>
+										<li>
+											<a href="index.html#/busqueda">{{i18n.modification}} {{i18n.online}}</a>
+										</li>
+										<li>
+											<a href="index.html#/exportarImportar"> {{i18n.export}} / {{i18n.import}}</a>
+										</li>
+
+										<li >
+											<a href="index.html#/busqueda">{{i18n.approve}} {{i18n.add}} </a>
+
+										</li>
+										<li class="dropdown">
+											<a href="#"> {{i18n.reports}} <b class="caret-right"></b></a>
+											<ul class="dropdown-menu">
+												<li>
+													<a href="index.html#/padron">{{i18n.census}}</a>
+												</li>
+												<li>
+													<a href="repo_mod.html">{{i18n.modification}}</a>
+												</li>
+												<li>
+													<a href="repo_empadronamieto.html">{{i18n.registration}}</a>
+												</li>
+											</ul>
+										</li>
+
+										<li >
+											<a href="index.html#/pendienteEnvios">{{i18n.shippingEarrings}}</a>
+
+										</li>
+
+									</ul>
+								</li>
+
+							</ul>
+							<ul class="nav navbar-nav user_menu pull-right" ng-controller="IdiomaController">
+
+								<li class="divider-vertical hidden-sm hidden-xs"></li>
+								<li class="dropdown">
+									<a href="#" class="dropdown-toggle nav_condensed" data-toggle="dropdown"><i  class="{{defaultLanguage.flag}}"></i> <b class="caret"></b></a>
+									<ul class="dropdown-menu" ng-repeat="lang in othersLanguages">
+										<li>
+											<a ng-click="changeLanguage(lang.abrev)"><i class="{{lang.flag}}"></i> {{lang.tag}}</a>
+										</li>
+
+									</ul>
+								</li>
+								<li class="divider-vertical hidden-sm hidden-xs"></li>
+								<li class="dropdown">
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="src/img/user_avatar.png" alt="" class="user_avatar">{{i18n.user}} <b class="caret"></b></a>
+									<ul class="dropdown-menu">
+
+										<li>
+											<a href="index.html#/login">{{i18n.logout}}</a>
+										</li>
+									</ul>
+								</li>
+							</ul>
+						</div>
+					
+				</nav>
+
+	
+<div id="contentwrapper">
+	<div class="main_content">
+		<div id="jCrumbs" class="breadCrumb module">
+			<ul>
+				<li>
+					<a href="#"><i class="glyphicon glyphicon-home"></i></a>
+				</li>
+				<li>
+					<a href="#">{{i18n.home}}</a>
+				</li>
+				<li>
+					<a href="#">{{i18n.registration}}</a>
+				</li>
+				<li>
+					<a href="#">{{i18n.search}}</a>
+				</li>
+
+			</ul>
+		</div>
+		<div class="row ">
+			<div class="col-sm-12 col-md-12 ">
+
+				<h3 class="heading">{{i18n.search}} </h3>
+				
+	          	<div class="col-sm-12 col-md-12">
+		            <div id="alertError" class="alert alert-danger " style="display:none">
+		                <a class="close" onclick="$('#alertError').hide()">�</a>
+		                <strong>Error</strong> {{error.result}}
+		            </div>
+		            <div id="alertSuccess" class="alert alert-success alert-dismissable" style="display:none">
+		                <a class="close" onclick="$('#alertSuccess').hide()">�</a>
+		                <strong>{{success.title}}</strong> {{success.result}}
+		            </div>
+   				</div>
+
+				<form name="busquedaForm" class="form_validation_reg">
+					<div class="formSep">
+						<div class="row">
+							<div class="col-sm-4 col-md-4">
+								<label>{{i18n.census}} </label>
+								<input name="reg_first_name" class="form-control" type="text" ng-model="filter.padron">
+
+							</div>
+
+							<div class="col-sm-4 col-md-4">
+								<label>{{i18n.name}} </label>
+								<input name="reg_first_name" class="form-control" type="text" ng-model="filter.nombre">
+
+							</div>
+							<div class="col-sm-4 col-md-4">
+								<label>{{i18n.surname}} {{i18n.paternal}} </label>
+								<input name="reg_first_name" class="form-control" type="text" ng-model="filter.apellidoPaterno">
+
+							</div>
+
+						</div>
+					</div>
+
+					<div class="formSep">
+						<div class="row">
+							<div class="col-sm-4 col-md-4">
+								<label>{{i18n.surname}} {{i18n.maternal}} </label>
+								<input name="reg_first_name" class="form-control" type="text" ng-model="filter.apellidoMaterno">
+
+							</div>
+							<div class="col-sm-4 col-md-4">
+								<label>{{i18n.countryDocumentation}} </label>
+								<select class="form-control" ng-model="filter.idPaisDocumento" ng-change="onPaisDocumentacionChange()">
+									<option value=""></option>
+									<option value="{{pais.id}}" ng-repeat="pais in paises">{{pais.descripcion}}</option>
+								</select>
+							</div>
+							<div class="col-sm-2 col-md-2">
+								<label>{{i18n.documentType}} </label>
+								<select class="form-control" ng-model="filter.idTipoDocumento" ng-disabled="filter.idPaisDocumento == ''">
+									<option value=""></option>
+									<option value="{{tipo.id}}" ng-repeat="tipo in tiposDocumento">{{tipo.codigo}}</option>
+								</select>
+							</div>
+							<div class="col-sm-2 col-md-2">
+								<label>{{i18n.documentNumber}} </label>
+
+								<input type="number" class="form-control" placeholder="{{i18n.documentNumber}}" ng-model="filter.numeroDocumento">
+							</div>
+
+						</div>
+
+					</div>
+					<div class="formSep">
+						<div class="row">
+							<div class="col-sm-4 col-md-4">
+								<label>{{i18n.dateEntry}}</label>
+								<div class="input-group date" id="divFechaAlta" data-date-format="dd/mm/yyyy">
+									<input class="form-control" readonly type="text">
+									<input id="hiddenFechaAlta" type="hidden"></input>
+									<span class="input-group-addon"><i class="splashy-calendar_day"></i></span>
+								</div>
+
+							</div>
+
+						</div>
+
+					</div>
+
+					<div class="form-actions">
+						<button class="btn btn-success" type="submit" ng-click="buscar()">
+							{{i18n.searchFor}}
+						</button>
+						<button class="btn btn-default" ng-click="volver()">
+							{{i18n.cancel}}
+						</button>
+					</div>
+				</form>
+
+			</div>
+
+
+		<br>
+
+		<div id="divResultados" class="row" style="display:none">
+			<div class="col-sm-12 col-md-12">
+				<h3 class="heading">{{i18n.searchResults}}</h3>
+				<table class="table table-striped table-bordered dTableR" id="dt_a">
+				</table>
+			</div>
+		</div>
+				</div>
+	</div>
+</div>
+<div class="modal fade" id="modal_form">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+					&times;
+				</button>
+				<h3 class="modal-title">{{i18n.dataBenefit}}</h3>
+			</div>
+			<div class="modal-body">
+				<div id="alertErrorVer" class="alert alert-danger alert-dismissable" style="display:none">
+					<a class="close" onclick="$('#alertErrorVer').hide()">×</a>	             
+	                <strong>Error</strong> {{errorVer.result}} 
+	            </div>
+				<div class="tabbable tabbable-bordered">
+					<ul class="nav nav-tabs">
+						<li class="active">
+							<a id="tabDatosPersonalesVer" data-toggle="tab" href="#tab_br1">{{i18n.personaData}}</a>
+						</li>
+						<li>
+							<a data-toggle="tab" href="#tab_br2">{{i18n.documentsResidentCountry}}</a>
+						</li>
+						<li>
+							<a data-toggle="tab" href="#tab_br3">{{i18n.identificationDocuments}}</a>
+						</li>
+						<li ng-show="beneficiosVer.length > 0">
+							<a data-toggle="tab" href="#tab_br4">{{i18n.benefits}}</a>
+						</li>
+						<li>
+							<a data-toggle="tab" href="#tab_br5">{{i18n.links}}</a>
+						</li>
+					</ul>
+					<div class="tab-content">
+						<div id="tab_br1" class="tab-pane active">
+							<div class="vcard">
+								<ul>
+									<li>
+										<h3 class="heading">{{i18n.personaData}}</h3>
+									</li>
+									<li class="col-sm-4 col-md-4">
+										<span class="item-key">{{i18n.name}}:</span>
+										<div class="vcard-item">{{beneficiarioVer.nombre}}</div>
+									</li>
+									<li class="col-sm-4 col-md-4">
+										<span class="item-key">{{i18n.surname}} {{i18n.paternal}}:</span>
+										<div class="vcard-item">{{beneficiarioVer.apellidoPaterno}}</div>
+									</li>
+									<li class="col-sm-4 col-md-4">
+										<span class="item-key">{{i18n.name}} {{i18n.paternal}}:</span>
+										<div class="vcard-item">{{beneficiarioVer.nombrePaterno}}</div>
+									</li>
+									<li class="col-sm-4 col-md-4">
+										<span class="item-key">{{i18n.surname}} {{i18n.maternal}}:</span>
+										<div class="vcard-item">{{beneficiarioVer.apellidoMaterno}}</div>
+									</li>
+									<li class="col-sm-4 col-md-4">
+										<span class="item-key">{{i18n.name}} {{i18n.paternal}}:</span>
+										<div class="vcard-item">{{beneficiarioVer.nombreMaterno}}</div>
+									</li>
+									<li class="col-sm-4 col-md-4">
+										<span class="item-key">{{i18n.sex}}:</span>
+										<div class="vcard-item">{{beneficiarioVer.sexo.descripcion}}</div>
+									</li>
+									<li class="col-sm-4 col-md-4">
+										<span class="item-key">{{i18n.dateBirth}}:</span>
+										<div class="vcard-item">{{formatDateToDisplayFormat(beneficiarioVer.fechaNacimiento)}}</div>
+									</li>
+									<li class="col-sm-4 col-md-4">
+										<span class="item-key">{{i18n.nationality}}:</span>
+										<div class="vcard-item">{{beneficiarioVer.nacionalidad.descripcion}}</div>
+									</li>
+									<li class="col-sm-4 col-md-4">
+										<span class="item-key"> {{i18n.civilStatus}}:</span>
+										<div class="vcard-item">{{beneficiarioVer.estadoCivil.descripcion}}</div>
+									</li>
+									<li class="col-sm-12 col-md-12">
+										<span class="item-key"> {{i18n.dateDeath}}:</span>
+										<div class="vcard-item">{{formatDateToDisplayFormat(beneficiarioVer.fechaFallecimiento)}}</div>
+									</li>
+								</ul>
+							</div>
+							<div class="vcard">
+								<ul>
+									<li>
+										<h3 class="heading">{{i18n.residenceAddress}}</h3>
+									</li>
+									<li class="col-sm-4 col-md-4">
+										<span class="item-key">{{i18n.street}}:</span>
+										<div class="vcard-item">{{beneficiarioVer.domicilio.calle}}</div>
+									</li>
+									<li class="col-sm-4 col-md-4">
+										<span class="item-key">{{i18n.number}}:</span>
+										<div class="vcard-item">{{beneficiarioVer.domicilio.nroPuerta}}</div>
+									</li>
+									<li class="col-sm-4 col-md-4">
+										<span class="item-key">{{i18n.floor}}:</span>
+										<div class="vcard-item">{{beneficiarioVer.domicilio.piso}}</div>
+									</li>
+									<li class="col-sm-4 col-md-4">
+										<span class="item-key">{{i18n.apartment}}:</span>
+										<div class="vcard-item">{{beneficiarioVer.domicilio.apartamento}}</div>
+									</li>
+									<li class="col-sm-4 col-md-4">
+										<span class="item-key">{{i18n.postcode}}:</span>
+										<div class="vcard-item">{{beneficiarioVer.domicilio.codigoPostal}}</div>
+									</li>
+									<li class="col-sm-4 col-md-4">
+										<span class="item-key">{{i18n.locality}}:</span>
+										<div class="vcard-item">{{beneficiarioVer.domicilio.localidad}}</div>
+									</li>
+									<li class="col-sm-4 col-md-4">
+										<span class="item-key">{{i18n.province}} / {{i18n.department}}:</span>
+										<div class="vcard-item">{{beneficiarioVer.domicilio.departamento}}</div>
+									</li>
+									<li class="col-sm-4 col-md-4">
+										<span class="item-key">{{i18n.country}}:</span>
+										<div class="vcard-item">{{beneficiarioVer.domicilio.pais.descripcion}}</div>
+									</li>
+									<li class="col-sm-4 col-md-4">
+										<span class="item-key">{{i18n.phone}}</span>
+										<div class="vcard-item">{{beneficiarioVer.domicilio.nroTelefono}}</div>
+									</li>
+									<li class="col-sm-12 col-md-12">
+										<span class="item-key">{{i18n.email}}:</span>
+										<div class="vcard-item">{{beneficiarioVer.domicilio.correoElectronico}}</div>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div id="tab_br2" class="tab-pane">
+							<div class="col-sm-12 col-md-12">
+								<h3 class="heading"> {{i18n.idDocumentsCountryResidence}} </h3>
+								<table class="table table-striped table-bordered dTableR" id="dt_a">
+									<thead>
+										<tr>
+											<th>{{i18n.country}}</th>
+											<th>{{i18n.documentType}}</th>
+											<th>{{i18n.documentNumber}}</th>
+											<th>{{i18n.issueDate}}</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr ng-repeat="item in identificacionesResidenciaVer">
+											<td>{{item.tipoDocumento.pais.descripcion}}</td>
+											<td>{{item.tipoDocumento.codigo}}</td>
+											<td>{{item.numeroDocumento}}</td>
+											<td>{{formatDateToDisplayDate(item.fechaEmision)}}</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<div id="tab_br3" class="tab-pane">
+							<div class="col-sm-12 col-md-12">
+								<h3 class="heading"> {{i18n.idDocumentsCountryResidence}} </h3>
+								<table class="table table-striped table-bordered dTableR" id="dt_a">
+									<thead>
+										<tr>
+											<th>{{i18n.country}}</th>
+											<th>{{i18n.documentType}}</th>
+											<th>{{i18n.documentNumber}}</th>
+											<th>{{i18n.issueDate}}</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr ng-repeat="item in identificacionesPagadorVer">
+											<td>{{item.tipoDocumento.pais.descripcion}}</td>
+											<td>{{item.tipoDocumento.codigo}}</td>
+											<td>{{item.numeroDocumento}}</td>
+											<td>{{formatDateToDisplayDate(item.fechaEmision)}}</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<div id="tab_br4" class="tab-pane">
+							<div class="col-sm-12 col-md-12">
+								<h3 class="heading">{{i18n.benefits}}</h3>
+								<table class="table table-striped table-bordered dTableR" id="dt_a">
+									<thead>
+										<tr>
+											<th>{{i18n.lending}}</th>
+											<th>{{i18n.numberBenefit}}</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr ng-repeat="item in beneficiosVer">
+											<td>{{item.prestacion.descripcion}}</td>
+											<td>{{item.numeroBeneficio}}</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<div id="tab_br5" class="tab-pane">
+							<div class="col-sm-12 col-md-12">
+								<h3 class="heading">{{i18n.links}}</h3>
+								<table class="table table-striped table-bordered dTableR" id="dt_a">
+									<thead>
+										<tr>
+											<th>{{i18n.payingCountry}}</th>
+											<th>{{i18n.countryManager}}</th>
+											<th>{{i18n.dateEntry}}</th>
+											<th>{{i18n.status}} {{i18n.benefit}}</th>
+											<th>{{i18n.date}} {{i18n.status}}</th>
+											<th>{{i18n.motive}}</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr ng-repeat="item in vinculosVer">
+											<td>{{item.paisPagador.descripcion}}</td>
+											<td>{{item.paisGestor.descripcion}}</td>
+											<td>{{formatDateToDisplayFormat(item.fechaAlta)}}</td>
+											<td>{{item.estadoBeneficio.descripcion}}</td>
+											<td>{{formatDateToDisplayFormat(item.fechaUltimaOperacionUsuario)}}</td>
+											<td>{{item.motivoEstado}}</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+		            </div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">
+					{{i18n.close}}
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div class="modal" id="modal_Edit">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+					&times;
+				</button>
+				<h3 class="modal-title">{{i18n.dataBenefit}}</h3>
+			</div>
+			<div class="modal-body">
+				<div id="alertErrorMod" class="alert alert-danger alert-dismissable" style="display:none">
+					<a class="close" onclick="$('#alertErrorMod').hide()">×</a>	             
+	                <strong>Error</strong> {{errorMod.result}} 
+	            </div>
+				<div class="w-box" id="w_sort07">
+					<div class="w-box-header">
+						{{i8n.changeData}}
+					</div>
+					<div class="w-box-content">
+						<div class="tabbable clearfix">
+							<ul class="nav nav-tabs">
+								<li class="active">
+									<a id="tabDatosPersonalesMod" href="#tab1" data-toggle="tab">{{i18n.personaData}}</a>
+								</li>
+								<li>
+									<a href="#tab2" data-toggle="tab">{{i18n.residenceData}}</a>
+								</li>
+								<li>
+									<a href="#tab3" data-toggle="tab">{{i18n.documentsResidentCountry}}</a>
+								</li>
+								<li>
+									<a href="#tab4" data-toggle="tab">{{i18n.identificationDocuments}}</a>
+								</li>
+								<li ng-show="mostrarTabBeneficio()">
+									<a href="#tab5" data-toggle="tab">{{i18n.benefits}}</a>
+								</li>
+								<li ng-show="mostrarTabVinculos()">
+									<a href="#tab6" data-toggle="tab">{{i18n.links}}</a>
+								</li>
+							</ul>
+							<div class="tab-content">
+								<div class="tab-pane active" id="tab1">
+									<h3 class="heading">{{i18n.personaData}} </h3>
+
+									<form name="beneficiarioForm" class="form_validation_reg">
+										<div class="formSep">
+											<div class="row">
+												<div class="col-sm-4 col-md-4">
+													<label>{{i18n.name}}<span class="f_req">*</span></label>
+													<input type="text" class="form-control" name="reg_first_name" ng-model="beneficiarioMod.nombre" ng-disabled="!permisos.otrosDatosPersonalesModificables" required>
+
+												</div>
+												<div class="col-sm-4 col-md-4">
+													<label>{{i18n.name}} {{i18n.paternal}} <span class="f_req">*</span></label>
+													<input type="text" class="form-control" name="reg_first_name" ng-model="beneficiarioMod.nombrePaterno" ng-disabled="!permisos.otrosDatosPersonalesModificables">
+												</div>
+												<div class="col-sm-4 col-md-4">
+													<label>{{i18n.surname}} {{i18n.paternal}} <span class="f_req">*</span></label>
+													<input type="text" class="form-control" name="reg_first_name" ng-model="beneficiarioMod.apellidoPaterno" ng-disabled="!permisos.otrosDatosPersonalesModificables" required>
+
+												</div>
+
+											</div>
+										</div>
+
+										<div class="formSep">
+											<div class="row">
+												<div class="col-sm-4 col-md-4">
+													<label>{{i18n.name}} {{i18n.maternal}} </label>
+													<input type="text" class="form-control" ng-model="beneficiarioMod.nombreMaterno" ng-required="paisGestor.datosPais.datosMaternosObligatorios" ng-disabled="!permisos.otrosDatosPersonalesModificables">
+
+												</div>
+												<div class="col-sm-4 col-md-4">
+													<label>{{i18n.surname}} {{i18n.maternal}} </label>
+													<input type="text" class="form-control" name="reg_first_name" ng-model="beneficiarioMod.apellidoMaterno" ng-required="paisGestor.datosPais.datosMaternosObligatorios" ng-disabled="!permisos.otrosDatosPersonalesModificables">
+												</div>
+												<div class="col-sm-4 col-md-4">
+													<label>{{i18n.sex}} <span class="f_req">*</span></label>
+													<select class="form-control" ng-model="sexoMod" ng-disabled="!permisos.otrosDatosPersonalesModificables" required
+														ng-options="s.codigo as s.descripcion for s in sexoList">
+													</select>
+												</div>
+											</div>
+										</div>
+
+										<div class="formSep">
+											<div class="row">
+												<div class="col-sm-4 col-md-4">
+													<label>{{i18n.dateBirth}} <span class="f_req">*</span></label>
+												<div class="input-group date" id="divFechaNacimiento" data-date-format="dd/mm/yyyy">
+													<input id="inputFechaNacimientoMod" class="form-control" readonly type="text">
+													<span class="input-group-addon" ng-show="permisos.otrosDatosPersonalesModificables"><i class="splashy-calendar_day"></i></span>
+												</div>
+												</div>
+												<div class="col-sm-4 col-md-4">
+													<label>{{i18n.nationality}}</label>
+													<select class="form-control" ng-model="nacionalidadMod" ng-disabled="!permisos.otrosDatosPersonalesModificables" required
+															ng-options="nac.id as nac.descripcion for nac in nacionalidadList">
+													</select>
+												</div>
+												<div class="col-sm-4 col-md-4">
+													<label>{{i18n.civilStatus}} <span class="f_req">*</span></label>
+													<select class="form-control" ng-model="estadoCivilMod" ng-disabled="!permisos.estadoCivilModificable" required
+															ng-options="e.id as e.descripcion for e in estadoCivilList">
+													</select>
+
+												</div>
+
+											</div>
+										</div>
+										<div class="formSep">
+											<div class="row">
+												<div class="col-sm-4 col-md-4">
+													<label>{{i18n.dateDeath}} <span class="f_req">*</span></label>
+												<div class="input-group date" id="divFechaFallecimiento" data-date-format="dd/mm/yyyy">
+													<input id="inputFechaFallecimientoMod" class="form-control" readonly type="text">
+													<span class="input-group-addon"><i class="splashy-calendar_day"></i></span>
+												</div>
+												</div>
+
+											</div>
+										</div>
+									</form>
+								</div>
+								<div class="tab-pane" id="tab2">
+									<h3 class="heading">{{i18n.domicile}}</h3>
+									<form name="domicilioForm" class="form_validation_reg">
+									<div class="formSep">
+										<div class="row">
+											<div class="col-sm-4 col-md-4">
+												<label>{{i18n.street}} <span class="f_req">*</span></label>
+												<input type="text" class="form-control" name="reg_first_name" ng-model="domicilioMod.calle" ng-disabled="!permisos.domicilioModificable" required>
+
+											</div>
+											<div class="col-sm-4 col-md-4">
+												<label>{{i18n.number}} <span class="f_req">*</span></label>
+												<input type="text" class="form-control" name="reg_first_name" ng-model="domicilioMod.nroPuerta" ng-disabled="!permisos.domicilioModificable" required>
+											</div>
+											<div class="col-sm-4 col-md-4">
+												<label>{{i18n.floor}}</label>
+												<input type="text" class="form-control" ng-model="domicilioMod.piso" ng-disabled="!permisos.domicilioModificable">
+											</div>
+										</div>
+									</div>
+									<div class="formSep">
+										<div class="row">
+											<div class="col-sm-4 col-md-4">
+												<label>{{i18n.apartment}} </label>
+												<input type="text" class="form-control" ng-model="domicilioMod.apartamento" ng-disabled="!permisos.domicilioModificable">
+											</div>
+											<div class="col-sm-4 col-md-4">
+												<label>{{i18n.postcode}} <span class="f_req">*</span></label>
+												<input type="text" class="form-control" name="reg_first_name" ng-model="domicilioMod.codigoPostal" ng-disabled="!permisos.domicilioModificable" required>
+											</div>
+											<div class="col-sm-4 col-md-4">
+												<label>{{i18n.locality}} <span class="f_req">*</span></label>
+												<input type="text" class="form-control" name="reg_first_name" ng-model="domicilioMod.localidad" ng-disabled="!permisos.domicilioModificable" required>
+											</div>
+										</div>
+									</div>
+									<div class="formSep">
+										<div class="row">
+											<div class="col-sm-4 col-md-4">
+												<label>{{i18n.province}} / {{i18n.department}} <span class="f_req">*</span></label>
+												<input type="text" class="form-control" name="reg_first_name " ng-model="domicilioMod.departamento" ng-disabled="!permisos.domicilioModificable" required>
+											</div>
+											<div class="col-sm-4 col-md-4">
+												<label>{{i18n.country}}</label>
+												<input type="text" class="form-control" ng-model="domicilioMod.pais.descripcion" ng-disabled="!permisos.domicilioModificable" disabled>
+											</div>
+											<div class="col-sm-4 col-md-4">
+												<label>{{i18n.phone}} </label>
+												<input type="text" class="form-control" ng-model="domicilioMod.nroTelefono" ng-disabled="!permisos.domicilioModificable">
+											</div>
+										</div>
+									</div>
+									<div class="formSep">
+										<div class="row">
+											<div class="col-sm-4 col-md-4">
+												<label>{{i18n.email}}</label>
+												<input type="text" class="form-control" name="reg_first_name" ng-model="domicilioMod.correoElectronico" ng-disabled="!permisos.domicilioModificable">
+											</div>
+										</div>
+									</div>
+									</form>
+								</div>
+								<div class="tab-pane" id="tab3">
+									<h3 class="heading">{{i18n.idDocumentsCountryResidence}} </h3>
+									<form name="documentoResidenciaForm" class="form_validation_reg">
+									<div class="formSep" ng-show="permisos.agregarIdentificacionesPaisResidencia">
+										<div class="row">
+											<div class="col-sm-4 col-md-4">
+												<label>{{i18n.country}} </label>
+												<input type="text" class="form-control" ng-model="domicilioMod.pais.descripcion" disabled>
+											</div>
+											<div class="col-sm-4 col-md-4">
+												<label>{{i18n.documentType}} <span class="f_req">*</span></label>
+												<select id="selectTipoDocumentoPaisResidenciaMod" class="form-control" ng-model="documentoResidenciaMod.tipoDocumento.id" required>
+													<option value=""></option>
+													<option ng-repeat="item in tipoDocumentoResidenciaList" value="{{item.id}}">{{item.codigo}}</option>
+												</select>
+											</div>
+											<div class="col-sm-4 col-md-4">
+												<label>{{i18n.documentNumber}} <span class="f_req">*</span></label>
+												<input type="text" class="form-control" ng-model="documentoResidenciaMod.numeroDocumento" required>
+											</div>
+										</div>
+									</div>
+									<div class="formSep" ng-show="permisos.agregarIdentificacionesPaisResidencia">
+										<div class="row">
+											<div class="col-sm-4 col-md-4">
+												<label>{{i18n.issueDate}}</label>
+											<div class="input-group date" id="divFechaEmision" data-date-format="dd/mm/yyyy">
+												<input id="inputFechaEmisionResidencia" class="form-control" readonly type="text">
+												<span class="input-group-addon"><i class="splashy-calendar_day"></i></span>
+											</div>
+
+											</div>
+											<div class="col-sm-4 col-md-4">
+												<label>{{i18n.registrationNumber}}</label>
+												<input type="text" class="form-control" ng-model="documentoResidenciaMod.numeroInscripcion">
+											</div>
+											<div class="col-sm-3 col-md-3">
+												<label>{{i18n.registerOrganism}}</label>
+												<input type="text" class="form-control" ng-model="documentoResidenciaMod.organismoInscripcion">
+
+											</div>
+											<br/>
+											<div class="col-sm-1 col-md-1">
+												<button class="btn btn-success" type="submit" ng-click="agregarDocumentoResidencia()" ng-disabled="!documentoResidenciaForm.$valid">
+													<i class="icon-plus"></i>
+												</button>
+
+											</div>
+
+										</div>
+									</div>
+									</form>
+
+									<br/>
+									<table class="table table-striped table-bordered dTableR" id="dt_a" ng-show="identificacionesResidenciaMod.length > 0">
+										<thead>
+											<tr>
+												<th>{{i18n.country}}</th>
+												<th>{{i18n.documentType}}</th>
+												<th>{{i18n.documentNumber}}</th>
+												<th>{{i18n.issueDate}}</th>
+												<th>{{i18n.action}}</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr ng-repeat="item in identificacionesResidenciaMod">
+												<td>{{item.tipoDocumento.pais.descripcion}}</td>
+												<td>{{item.tipoDocumento.codigo}}</td>
+												<td>{{item.numeroDocumento}}</td>
+												<td>{{formatDateToDisplayFormat(item.fechaEmisionDocumento)}}</td>
+												<td><a class="delete-from-list" ng-show="puedeEliminarIdentificacionResidencia(item)" ng-click="borrarDocumentoResidencia($index)"> <i class="icon-remove"></i> </a></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<div class="tab-pane" id="tab4">
+
+									<h3 class="heading">{{i18n.idDocumentsPayingCountry}}</h3>
+									<form name="documentoPagadorForm" class="form_validation_reg">
+									<div class="formSep" ng-show="permisos.agregarIdentificacionesPaisesPagadoresActuales || permisos.agregarIdentificacionesPaisesPagadoresNuevos">
+										<div class="row">
+											<div class="col-sm-4 col-md-4">
+												<label>{{i18n.country}} <span class="f_req">*</span></label>
+												<select id="selectPaisPagador" class="form-control" ng-model="documentoPagadorMod.tipoDocumento.pais.id" ng-change="onPaisPagadorChange()" required>
+													<option value=""></option>
+													<option ng-repeat="item in paisPagadorList" value="{{item.id}}">{{item.descripcion}}</option>
+												</select>
+											</div>
+											<div class="col-sm-4 col-md-4">
+												<label>{{i18n.documentType}} <span class="f_req">*</span></label>
+												<select id="selectTipoDocumentoPaisPagadorMod" class="form-control" required ng-model="documentoPagadorMod.tipoDocumento.id" ng-disabled="documentoPagadorForm.pais == ''">
+													<option value=""></option>
+													<option ng-repeat="item in tipoDocumentoPagadorList" value="{{item.id}}">{{item.codigo}}</option>
+												</select>
+											</div>
+											<div class="col-sm-4 col-md-4">
+												<label>{{i18n.documentNumber}} <span class="f_req">*</span></label>
+												<input type="text" class="form-control" ng-model="documentoPagadorMod.numeroDocumento" required>
+
+											</div>
+
+										</div>
+									</div>
+									<div class="formSep" ng-show="permisos.agregarIdentificacionesPaisesPagadoresActuales || permisos.agregarIdentificacionesPaisesPagadoresNuevos">
+										<div class="row">
+											<div class="col-sm-4 col-md-4">
+												<label>{{i18n.issueDate}}</label>
+												<div class="input-group date" id="divFechaEmision2" data-date-format="dd/mm/yyyy">
+													<input id="inputFechaEmisionPagador" class="form-control" readonly type="text">
+													<span class="input-group-addon"><i class="splashy-calendar_day"></i></span>
+												</div>
+
+											</div>
+											<div class="col-sm-4 col-md-4">
+												<label>{{i18n.registrationNumber}} </label>
+												<input type="text" class="form-control" ng-model="documentoPagadorMod.numeroInscripcion">
+											</div>
+											<div class="col-sm-3 col-md-3">
+												<label>{{i18n.registerOrganism}}</label>
+												<input type="text" class="form-control" ng-model="documentoPagadorMod.organismoInscripcion">
+											</div>
+											<br/>
+											<div class="col-sm-1 col-md-1">
+												<button class="btn btn-success" type="submit" ng-disabled="!documentoPagadorForm.$valid" ng-click="agregarDocumentoPagador()">
+													<i class="icon-plus"></i>
+												</button>
+
+											</div>
+
+										</div>
+									</div>
+									</form>
+
+									<br/>
+									<table class="table table-striped table-bordered dTableR" id="dt_a" ng-show="identificacionesPagadorMod.length > 0">
+										<thead>
+											<tr>
+												<th>{{i18n.country}}</th>
+												<th>{{i18n.documentType}}</th>
+												<th>{{i18n.documentNumber}}</th>
+												<th>{{i18n.issueDate}}</th>
+												<th>{{i18n.action}}</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr ng-repeat="item in identificacionesPagadorMod">
+												<td>{{item.tipoDocumento.pais.descripcion}}</td>
+												<td>{{item.tipoDocumento.codigo}}</td>
+												<td>{{item.numeroDocumento}}</td>
+												<td>{{formatDateToDisplayFormat(item.fechaEmisionDocumento)}}</td>
+												<td><a class="delete-from-list" ng-show="puedeEliminarIdentificacionPagador(item.id)" ng-click="borrarDocumentoPagador($index)"> <i class="icon-remove"></i> </a></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<div class="tab-pane" id="tab5">
+
+									<h3 class="heading">{{i18n.benefits}}</h3>
+									<form name="beneficioForm" class="form_validation_reg">
+									<div class="formSep" ng-show="permisos.agregarBeneficios">
+										<div class="row">
+											<div class="col-sm-4 col-md-4">
+												<label>{{i18n.lending}} <span class="f_req">*</span></label>
+												<select id="selectPrestacionMod" class="form-control" ng-model="prestacionMod" required>
+													<option value=""></option>
+													<option ng-repeat="item in prestacionList" value="{{item.id}}">{{item.descripcion}}</option>
+												</select>
+											</div>
+											<div class="col-sm-4 col-md-4">
+												<label>{{i18n.numberBenefit}}<span class="f_req">*</span></label>
+												<input type="text" class="form-control" ng-model="numeroBeneficioMod" required>
+											</div>
+											<div class="col-sm-1 col-md-1">
+												<br/>
+												<button class="btn btn-success" type="submit" ng-disabled="!beneficioForm.$valid" ng-click="agregarBeneficio()">
+													<i class="icon-plus"></i>
+												</button>
+											</div>
+										</div>
+									</div>
+									</form>
+
+									<br/>
+									<table class="table table-striped table-bordered dTableR" id="dt_a" ng-show="beneficiosMod.length > 0">
+										<thead>
+											<tr>
+												<th>{{i18n.lending}}</th>
+												<th>{{i18n.numberBenefit}}</th>
+												<th>{{i18n.action}}</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr ng-repeat="item in beneficiosMod">
+												<td>{{item.prestacion.descripcion}}</td>
+												<td>{{item.numeroBeneficio}}</td>
+												<td><a class="delete-from-list" ng-show="puedeEliminarBeneficio(item.id)" ng-click="borrarBeneficio($index)"> <i class="icon-remove"></i> </a></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<div class="tab-pane" id="tab6">
+									<div class="col-sm-12 col-md-12">
+										<h3 class="heading">{{i18n.links}}</h3>
+										<form name="vinculosForm" class="form_validation_reg">
+											<table class="table table-striped table-bordered dTableR" id="dt_a">
+												<thead>
+													<tr>
+														<th>{{i18n.payingCountry}}</th>
+														<th>{{i18n.countryManager}}</th>
+														<th>{{i18n.dateEntry}}</th>
+														<th>{{i18n.status}} {{i18n.benefit}}</th>
+														<th>{{i18n.date}} {{i18n.status}}</th>
+														<th>{{i18n.terminating}}</th>
+														<th>{{i18n.motive}}</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr ng-repeat="item in vinculosMod">
+														<td>{{item.paisPagador.descripcion}}</td>
+														<td>{{item.paisGestor.descripcion}}</td>
+														<td>{{formatDateToDisplayFormat(item.fechaAlta)}}</td>
+														<td>{{item.estadoBeneficio.descripcion}}</td>
+														<td>{{formatDateToDisplayFormat(item.fechaUltimaOperacionUsuario)}}</td>
+														<td><input type="checkbox" ng-model="vinculosBaja[$index].baja" ng-show="permitirBajaVinculo($index)"></input></td>
+														<td>
+															<span ng-show="permitirBajaVinculo($index)"><input type="text" class="form-control" ng-model="vinculosBaja[$index].motivoEstado"></input></span>
+															<span ng-show="!permitirBajaVinculo($index)">{{item.motivoEstado}}</span>
+														</td>
+													</tr>
+												</tbody>
+											</table>
+										</form>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-success" ng-click="guardarModificacion()">
+					{{i18n.change}}
+				</button>
+				<button id="btnCerrar" type="button" class="btn btn-default" data-dismiss="modal" ng-click="cerrarMod()">
+					{{i18n.close}}
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="modal_rechazar">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+					&times;
+				</button>
+				<h3 class="modal-title">{{i18n.reject}}</h3>
+			</div>
+			<div class="modal-body">
+				<div id="alertErrorRechazar" class="alert alert-danger alert-dismissable" style="display:none">
+					<a class="close" onclick="$('#alertErrorRechazar').hide()">×</a>	             
+	                <strong>Error</strong> {{errorRechazar.result}} 
+	            </div>
+				<div class="row ">
+					<div class="col-sm-12 col-md-12 ">
+
+						<h3 class="heading">{{i18n.reasonsRejection}} </h3>
+
+						<form class="form_validation_reg">
+							<div class="formSep">
+								<div class="row">
+									<div class="col-sm-6 col-md-6">
+										<label>{{i18n.reasonsRejection}} <span class="f_req">*</span></label>
+										<select class="form-control" ng-model="idTipoMotivo" ng-change="onTipoMotivoChange()">
+											<option ng-repeat="item in tipoMotivoList" value="{{item.id}}">{{item.descripcion}}</option>
+										</select>
+									</div>
+									<div class="col-sm-6 col-md-6">
+										<label>{{i18n.detailReason}}</label>
+										<textarea id="txtOtrosMotivos" class="sepH_a form-control" rows="4" cols="1" name="txtarea_limit_words"
+											ng-model="motivoEstado" ng-disabled="idTipoMotivo != 0"></textarea>																				
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-success" ng-click="guardarRechazo()">
+					{{i18n.reject}}
+				</button>
+				<button id="btnCerrarModalRechazo" type="button" class="btn btn-default" data-dismiss="modal" ng-click="cerrarRechazo()">
+					{{i18n.close}}
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+

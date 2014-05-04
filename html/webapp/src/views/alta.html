@@ -1,0 +1,500 @@
+				<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+					<div class="navbar-inner">
+						
+							<ul class="nav navbar-nav" id="mobile-nav">
+
+								<li class="dropdown">
+									<a data-toggle="dropdown" class="dropdown-toggle" href="#"><span class="glyphicon glyphicon-th"></span> {{i18n.registration}} <b class="caret"></b></a>
+									<ul class="dropdown-menu">
+										<li>
+											<a href="index.html#/busqueda">{{i18n.search}}</a>
+										</li>
+										<li ng-show="isUserInRole('USER_G')">
+											<a href="index.html#/alta">{{i18n.add}}</a>
+										</li>
+										<li>
+											<a href="index.html#/busqueda">{{i18n.modification}} {{i18n.online}}</a>
+										</li>
+										<li>
+											<a href="index.html#/exportarImportar"> {{i18n.export}} / {{i18n.import}}</a>
+										</li>
+
+										<li >
+											<a href="index.html#/busqueda">{{i18n.approve}} {{i18n.add}} </a>
+
+										</li>
+										<li class="dropdown">
+											<a href="#"> {{i18n.reports}} <b class="caret-right"></b></a>
+											<ul class="dropdown-menu">
+												<li>
+													<a href="index.html#/padron">{{i18n.census}}</a>
+												</li>
+												<li>
+													<a href="repo_mod.html">{{i18n.modification}}</a>
+												</li>
+												<li>
+													<a href="repo_empadronamieto.html">{{i18n.registration}}</a>
+												</li>
+											</ul>
+										</li>
+
+										<li >
+											<a href="index.html#/pendienteEnvios">{{i18n.shippingEarrings}}</a>
+
+										</li>
+
+									</ul>
+								</li>
+
+							</ul>
+							<ul class="nav navbar-nav user_menu pull-right">
+								<li class="divider-vertical hidden-sm hidden-xs"></li>
+								<li class="dropdown">
+									<a href="#" class="dropdown-toggle nav_condensed" data-toggle="dropdown"><i class="{{defaultLanguage.flag}}"></i> <b class="caret"></b></a>
+									<ul class="dropdown-menu" ng-repeat="lang in othersLanguages">
+										<li>
+											<a ng-click="changeLanguage(lang.abrev)"><i class="{{lang.flag}}"></i> {{lang.tag}}</a>
+										</li>
+									</ul>
+								</li>
+								<li class="divider-vertical hidden-sm hidden-xs"></li>
+								<li class="dropdown">
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="src/img/user_avatar.png" alt="" class="user_avatar">{{i18n.user}} <b class="caret"></b></a>
+									<ul class="dropdown-menu">
+										<li>
+											<a href="index.html#/login">{{i18n.logout}}</a>
+										</li>
+									</ul>
+								</li>
+							</ul>
+						</div>
+					
+				</nav>
+
+	
+
+
+<div id="contentwrapper">
+	<div class="main_content">
+		<div id="jCrumbs" class="breadCrumb module">
+			<ul>
+				<li>
+					<a href="#"><i class="glyphicon glyphicon-home"></i></a>
+				</li>
+				<li>
+					<a href="#">{{i18n.home}}</a>
+				</li>
+				<li>
+					<a href="#">{{i18n.registration}}</a>
+				</li>
+				<li>
+					<a href="#">{{i18n.add}}</a>
+				</li>
+
+			</ul>
+		</div>
+		<div class="row ">
+			<div class="col-sm-12 col-md-12 ">
+
+				<h3 class="heading">{{i18n.add}} </h3>
+				<div class="col-sm-12 col-md-12">
+		            <div class="alert alert-danger " style="display:none">
+		                <a class="close" onclick="$('.alert-danger').hide()">×</a>
+		                <strong>Error</strong> {{error.result}}
+		            </div>
+		            <div class="alert alert-success alert-dismissable" style="display:none">
+		                <a class="close" onclick="$('.alert-success').hide()">×</a>
+		                <strong>{{i18n.add}} {{i18n.correct}}</strong> {{success.result}}
+		            </div>
+   				</div>
+
+				<div class="tabbable tabbable-bordered">
+					<ul class="nav nav-tabs">
+						<li class="active">
+							<a id="tabBeneficiario" data-toggle="tab" href="#tab_br1">{{i18n.beneficiaryData}}</a>
+						</li>
+						<li>
+							<a data-toggle="tab" href="#tab_br2">{{i18n.residenceAddress}}</a>
+						</li>
+						<li>
+							<a data-toggle="tab" href="#tab_br3">{{i18n.documentsResidentCountry}}</a>
+						</li>
+						<li>
+							<a data-toggle="tab" href="#tab_br4">{{i18n.identificationDocuments}}</a>
+						</li>
+						<li ng-show="mostrarTabBeneficio()">
+							<a data-toggle="tab" href="#tab_br5">{{i18n.benefit}}</a>
+						</li>
+					</ul>
+					<div class="tab-content">
+						<div id="tab_br1" class="tab-pane active">
+							<h3 class="heading">{{i18n.personaData}} </h3>
+								<form name="beneficiarioForm" class="form_validation_reg" novalidate>
+								<div class="formSep">
+									<div class="row">
+										<div class="col-sm-4 col-md-4">
+											<label>{{i18n.name}} <span class="f_req">*</span></label>
+											<input id="inputNombre" type="text" class="form-control" name="reg_first_name" ng-model="beneficiario.nombre" ng-readonly="altaCompletada" required>
+										</div>
+										<div class="col-sm-4 col-md-4">
+											<label>{{i18n.name}} {{i18n.paternal}}</span></label>
+											<input type="text" class="form-control" name="reg_first_name" ng-model="beneficiario.nombrePaterno" ng-readonly="altaCompletada">
+										</div>
+										<div class="col-sm-4 col-md-4">
+											<label>{{i18n.surname}} {{i18n.paternal}} <span class="f_req">*</span></label>
+											<input type="text" class="form-control" name="reg_first_name" ng-model="beneficiario.apellidoPaterno" ng-readonly="altaCompletada" required>
+
+										</div>
+
+									</div>
+								</div>
+
+								<div class="formSep">
+									<div class="row">
+										<div class="col-sm-4 col-md-4">
+											<label>{{i18n.name}} {{i18n.maternal}} <span class="f_req" ng-show="paisGestor.datosPais.datosMaternosObligatorios">*</span></label>
+											<input type="text" class="form-control" ng-model="beneficiario.nombreMaterno" ng-required="paisGestor.datosPais.datosMaternosObligatorios" ng-readonly="altaCompletada">
+										</div>
+										<div class="col-sm-4 col-md-4">
+											<label>{{i18n.surname}} {{i18n.maternal}} <span class="f_req" ng-show="paisGestor.datosPais.datosMaternosObligatorios">*</span></label>
+											<input type="text" class="form-control" name="reg_first_name" ng-model="beneficiario.apellidoMaterno" ng-required="paisGestor.datosPais.datosMaternosObligatorios" ng-readonly="altaCompletada">
+										</div>
+										<div class="col-sm-4 col-md-4">
+											<label>{{i18n.sex}} <span class="f_req">*</span></label>
+											<select class="form-control" ng-model="sexo" name="beneficiario.sexo.codigo" ng-readonly="altaCompletada" required>
+												<option value=""></option>
+												<option ng-repeat="item in sexoList" value="{{item.codigo}}">{{item.descripcion}}</option>
+											</select>
+
+										</div>
+
+									</div>
+								</div>
+
+								<div class="formSep">
+									<div class="row">
+										<div class="col-sm-4 col-md-4">
+											<label>{{i18n.dateBirth}} <span class="f_req">*</span></label>
+											<div class="input-group date" id="fechaNac" data-date-format="dd/mm/yyyy">
+												<input id="inputFechaNacimiento" class="form-control" type="text" readonly>
+												<span class="input-group-addon"><i class="splashy-calendar_day"></i></span>
+											</div>
+										</div>
+										<div class="col-sm-4 col-md-4">
+											<label>{{i18n.nationality}} <span class="f_req">*</span></label>
+											<select class="form-control" ng-model="nacionalidad" name="beneficiario.nacionalidad.id" ng-readonly="altaCompletada" required>
+												<option value=""></option>
+												<option ng-repeat="item in nacionalidadList" value="{{item.id}}">{{item.descripcion}}</option>
+											</select>
+										</div>
+										<div class="col-sm-4 col-md-4">
+											<label>{{i18n.civilStatus}} <span class="f_req">*</span></label>
+											<select class="form-control" ng-model="estadoCivil" name="beneficiario.estadoCivil.id" ng-readonly="altaCompletada" required>                                            
+												<option value=""></option>
+												<option ng-repeat="item in estadoCivilList" value="{{item.id}}">{{item.descripcion}}</option>
+											</select>
+										</div>
+									</div>
+								</div>
+							</form>
+						</div>
+						<div id="tab_br2" class="tab-pane">
+							<h3 class="heading">{{i18n.domicile}} </h3>
+							<form name="domicilioForm" class="form_validation_reg" novalidate>
+							<div class="formSep">
+								<div class="row">
+									<div class="col-sm-4 col-md-4">
+										<label>{{i18n.street}} <span class="f_req">*</span></label>
+										<input type="text" class="form-control" name="reg_first_name" ng-model="domicilio.calle" ng-readonly="altaCompletada" required>
+									</div>
+									<div class="col-sm-4 col-md-4">
+										<label>{{i18n.number}} <span class="f_req">*</span></label>
+										<input type="text" class="form-control" name="reg_first_name" ng-model="domicilio.nroPuerta" ng-readonly="altaCompletada" required>
+									</div>
+									<div class="col-sm-4 col-md-4">
+										<label>{{i18n.floor}}</label>
+										<input type="text" class="form-control" ng-model="domicilio.piso" ng-readonly="altaCompletada">
+									</div>
+								</div>
+							</div>
+							<div class="formSep">
+								<div class="row">
+									<div class="col-sm-4 col-md-4">
+										<label>{{i18n.apartment}}</label>
+										<input type="text" class="form-control" ng-model="domicilio.apartamento" ng-readonly="altaCompletada">
+									</div>
+									<div class="col-sm-4 col-md-4">
+										<label>{{i18n.postcode}} <span class="f_req">*</span></label>
+										<input type="text" class="form-control" name="reg_first_name" ng-model="domicilio.codigoPostal" ng-readonly="altaCompletada" required>
+									</div>
+									<div class="col-sm-4 col-md-4">
+										<label>{{i18n.locality}} <span class="f_req">*</span></label>
+										<input type="text" class="form-control" name="reg_first_name" ng-model="domicilio.localidad" ng-readonly="altaCompletada" required>
+
+									</div>
+
+								</div>
+							</div>
+							<div class="formSep">
+								<div class="row">
+									<div class="col-sm-4 col-md-4">
+										<label>{{i18n.province}} / {{i18n.department}} <span class="f_req">*</span></label>
+										<input type="text" class="form-control" name="reg_first_name " ng-model="domicilio.departamento" ng-readonly="altaCompletada" required>
+
+									</div>
+									<div class="col-sm-4 col-md-4">
+										<label> {{i18n.country}}</label>
+										<input type="text" class="form-control" value="{{paisGestor.descripcion}}" disabled></input>
+									</div>
+									<div class="col-sm-4 col-md-4">
+										<label>{{i18n.phone}} </label>
+										<input type="text" class="form-control" ng-model="domicilio.nroTelefono" ng-readonly="altaCompletada">
+
+									</div>
+
+								</div>
+							</div>
+							<div class="formSep">
+								<div class="row">
+									<div class="col-sm-4 col-md-4">
+										<label>{{i18n.email}}</label>
+										<input type="text" class="form-control" name="reg_first_name" ng-model="domicilio.correoElectronico" ng-readonly="altaCompletada">
+									</div>
+								</div>
+							</div>
+							</form>
+						</div>
+						<div id="tab_br3" class="tab-pane">
+
+							<h3 class="heading">{{i18n.idDocumentsCountryResidence}} </h3>
+							<form name="documentoResidenciaForm" class="form_validation_reg" novalidate>
+							<div class="formSep">
+								<div class="row">
+									<div class="col-sm-4 col-md-4">
+										<label>{{i18n.country}}</label>
+										<input id="inputDescPaisResidencia" type="text" class="form-control" value="{{paisGestor.descripcion}}" disabled></input>
+									</div>
+									<div class="col-sm-4 col-md-4">
+										<label>{{i18n.documentType}} <span class="f_req">*</span></label>
+										<select id="selectTipoDocumentoPaisResidencia" class="form-control" ng-model="tipoDocumentoResidencia" ng-readonly="altaCompletada" required>
+											<option value=""></option>
+											<option ng-repeat="item in tipoDocumentoResidenciaList" value="{{item.id}}">{{item.codigo}}</option>
+										</select>
+									</div>
+									<div class="col-sm-4 col-md-4">
+										<label>{{i18n.documentNumber}} <span class="f_req">*</span></label>
+										<input type="text" class="form-control" ng-model="numeroDocumentoResidencia" ng-readonly="altaCompletada" required>
+									</div>
+
+								</div>
+							</div>
+							<div class="formSep">
+								<div class="row">
+									<div class="col-sm-4 col-md-4">
+										<label>{{i18n.issueDate}}</label>
+										<div class="input-group date" id="fechaEmisionResidencia" data-date-format="dd/mm/yyyy">
+										<input id="inputFechaEmisionResidencia" class="form-control" readonly>
+										<span class="input-group-addon"><i class="splashy-calendar_day"></i></span>
+									</div>
+									</div>
+									<div class="col-sm-4 col-md-4">
+										<label>{{i18n.numberEnrollment}} </label>
+										<input type="text" class="form-control" ng-model="numeroInscripcionDocumentoResidencia" ng-readonly="altaCompletada">
+									</div>
+									<div class="col-sm-3 col-md-3">
+										<label>{{i18n.enrollmentAgency}}</label>
+										<input type="text" class="form-control" ng-model="organismoInscripcionDocumentoResidencia" ng-readonly="altaCompletada">
+
+									</div>
+									<br/>
+									<div class="col-sm-1 col-md-1">
+										<button class="btn btn-success" type="submit" ng-click="agregarDocumentoResidencia()" ng-disabled="!documentoResidenciaForm.$valid">
+											<i class="icon-plus"></i>
+										</button>
+
+									</div>
+
+								</div>
+							</div>
+							</form>
+
+							<br/>
+							<table class="table table-striped table-bordered dTableR" id="dt_a"
+									ng-show="mostrarListaDocumentosResidencia()">
+								<thead>
+									<tr>
+										<th>{{i18n.country}}</th>
+										<th>{{i18n.documentType}}</th>
+										<th>{{i18n.documentNumber}}</th>
+										<th>{{i18n.issueDate}}</th>
+										<th>{{i18n.action}}</th>
+
+									</tr>
+								</thead>
+								<tbody>
+									<tr ng-repeat="item in documentosResidenciaList">
+										<td>{{item.tipoDocumento.pais.descripcion}}</td>
+										<td>{{item.tipoDocumento.descripcion}}</td>
+										<td>{{item.numeroDocumento}}</td>
+										<td>{{formatDateToDisplayFormat(item.fechaEmisionDocumento)}}</td>
+										<td><a class="delete-from-list" ng-click="borrarDocumentoResidencia($index)"> <i class="icon-remove"></i> </a></td>
+									</tr>
+								</tbody>
+							</table>
+
+						</div>
+						<div id="tab_br4" class="tab-pane">
+
+							<h3 class="heading">{{i18n.idDocumentsPayingCountry}}</h3>
+
+							<form name="documentoPagadorForm" class="form_validation_reg" novalidate>
+							<div class="formSep">
+								<div class="row">
+									<div class="col-sm-4 col-md-4">
+										<label>{{i18n.country}} <span class="f_req">*</span></label>
+										<select id="selectPaisPagador" class="form-control" ng-model="paisPagador" ng-change="onPaisPagadorChange()" ng-readonly="altaCompletada" required>
+											<option value=""></option>
+											<option ng-repeat="item in paisPagadorList" value="{{item.id}}">{{item.descripcion}}</option>
+										</select>
+									</div>
+									<div class="col-sm-4 col-md-4">
+										<label>{{i18n.documentType}} <span class="f_req">*</span></label>
+										<select id="selectTipoDocumentoPagador" class="form-control" ng-model="tipoDocumentoPagador" ng-readonly="altaCompletada" required>
+											<option value=""></option>
+											<option ng-repeat="item in tipoDocumentoPagadorList" value="{{item.id}}">{{item.codigo}}</option>
+										</select>
+									</div>
+									<div class="col-sm-4 col-md-4">
+										<label>{{i18n.documentNumber}} <span class="f_req">*</span></label>
+										<input type="text" class="form-control" ng-model="numeroDocumentoPagador" ng-readonly="altaCompletada" required>
+
+									</div>
+
+								</div>
+							</div>
+							<div class="formSep">
+								<div class="row">
+									<div class="col-sm-4 col-md-4">
+										<label>{{i18n.issueDate}}</label>
+										<div class="input-group date" id="fechaEmisionPagador" data-date-format="dd/mm/yyyy">
+										<input id="inputFechaEmisionPagador" class="form-control" type="text" readonly>
+										<span class="input-group-addon"><i class="splashy-calendar_day"></i></span>
+									</div>
+									</div>
+									<div class="col-sm-4 col-md-4">
+										<label>{{i18n.numberEnrollment}} </label>
+										<input type="text" class="form-control" ng-model="numeroInscripcionDocumentoPagador" ng-readonly="altaCompletada">
+									</div>
+									<div class="col-sm-3 col-md-3">
+										<label>{{i18n.enrollmentAgency}} </label>
+										<input type="text" class="form-control" ng-model="organismoInscripcionDocumentoPagador" ng-readonly="altaCompletada">
+									</div>
+									<br/>
+									<div class="col-sm-1 col-md-1">
+										<button class="btn btn-success" type="submit" ng-click="agregarDocumentoPagador()" ng-disabled="!documentoPagadorForm.$valid">
+											<i class="icon-plus"></i>
+										</button>
+
+									</div>
+
+								</div>
+							</div>
+							</form>
+
+							<br/>
+							<table class="table table-striped table-bordered dTableR" id="dt_a"
+									ng-show="mostrarListaDocumentosPagador()">
+								<thead>
+									<tr>
+										<th>{{i18n.country}}</th>
+										<th>{{i18n.documentType}}</th>
+										<th>{{i18n.documentNumber}}</th>
+										<th>{{i18n.issueDate}}</th>
+										<th>{{i18n.action}}</th>
+
+									</tr>
+								</thead>
+								<tbody>
+									<tr ng-repeat="item in documentosPagadorList">
+										<td>{{item.tipoDocumento.pais.descripcion}}</td>
+										<td>{{item.tipoDocumento.descripcion}}</td>
+										<td>{{item.numeroDocumento}}</td>
+										<td>{{formatDateToDisplayFormat(item.fechaEmisionDocumento)}}</td>
+										<td><a class="delete-from-list" ng-click="borrarDocumentoPagador($index)"> <i class="icon-remove"></i> </a></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+
+						<div id="tab_br5" class="tab-pane">
+
+							<h3 class="heading">{{i18n.benefit}} </h3>
+
+							<form name="beneficioForm" class="form_validation_reg" novalidate>
+							<div class="formSep">
+								<div class="row">
+									<div class="col-sm-4 col-md-4">
+										<label>{{i18n.lending}} <span class="f_req">*</span></label>
+										<select id="selectPrestacion" class="form-control" ng-model="prestacion" ng-readonly="altaCompletada" required>
+											<option value=""></option>
+											<option ng-repeat="item in prestacionList" value="{{item.id}}">{{item.descripcion}}</option>
+										</select>
+									</div>
+
+									<div class="col-sm-4 col-md-4">
+										<label>{{i18n.numberBenefit}} <span class="f_req">*</span></label>
+										<input type="text" class="form-control" ng-model="numeroBeneficio" ng-readonly="altaCompletada" required></input>
+									</div>
+									<br/>
+									<div class="col-sm-1 col-md-1">
+										<button class="btn btn-success" type="submit" ng-click="agregarBeneficio()" ng-disabled="!beneficioForm.$valid">
+											<i class="icon-plus"></i>
+										</button>
+									</div>
+								</div>
+							</div>
+							</form>
+
+							<br/>
+							<table class="table table-striped table-bordered dTableR" id="dt_a"
+									ng-show="mostrarListaBeneficios()">
+								<thead>
+									<tr>
+										<th>{{i18n.lending}}</th>
+										<th>{{i18n.numberBenefit}}</th>
+										<th>{{i18n.action}}</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr ng-repeat="item in beneficioList">
+										<td>{{item.prestacion.descripcion}}</td>
+										<td>{{item.numeroBeneficio}}</td>
+										<td><a class="delete-from-list" ng-click="borrarBeneficio($index)"> <i class="icon-remove"></i> </a></td>
+									</tr>
+								</tbody>
+							</table>
+
+						</div>
+					</div>
+				</div>
+				<br/>
+				<div class="form-actions">
+					<button class="btn btn-success" type="submit" ng-click="guardar()" ng-show="!altaCompletada">
+						{{i18n.save}}
+					</button>
+					<button class="btn btn-default" ng-show="!altaCompletada" ng-click="volver()">
+						{{i18n.cancel}}
+					</button>
+					<button class="btn btn-success" type="submit" ng-click="nuevaAlta()" ng-show="altaCompletada">
+						{{i18n.new}} {{i18n.add}}
+					</button>
+					<button class="btn btn-default" ng-show="altaCompletada" ng-click="volver()">
+						{{i18n.back}}
+					</button>
+				</div>
+
+			</div>
+
+		</div>
+	</div>
+</div>

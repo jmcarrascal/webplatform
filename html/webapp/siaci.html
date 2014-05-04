@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en"  ng-app="app">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>SIACI</title>
+
+		<!-- Bootstrap framework -->
+		<link rel="stylesheet" href="src/bootstrap/css/bootstrap.min.css" />
+		<!-- jQuery UI theme -->
+		<link rel="stylesheet" href="src/lib/jquery-ui/css/Aristo/Aristo.css" />
+		<!-- tooltips-->
+		<link rel="stylesheet" href="src/lib/jBreadcrumbs/css/BreadCrumb.css" />
+		<!-- tooltips-->
+		<link rel="stylesheet" href="src/lib/qtip2/jquery.qtip.min.css" />
+		<!-- colorbox -->
+		<link rel="stylesheet" href="src/lib/colorbox/colorbox.css" />
+		<!-- code prettify -->
+		<link rel="stylesheet" href="src/lib/google-code-prettify/prettify.css" />
+		<!-- sticky notifications -->
+		<link rel="stylesheet" href="src/lib/sticky/sticky.css" />
+		<!-- aditional icons -->
+		<link rel="stylesheet" href="src/img/splashy/splashy.css" />
+		<!-- flags -->
+		<link rel="stylesheet" href="src/img/flags/flags.css" />
+		<!-- datatables -->
+		<link rel="stylesheet" href="src/lib/datatables/extras/TableTools/media/css/TableTools.css">
+		<!-- datepicker -->
+		<link rel="stylesheet" href="src/lib/datepicker/datepicker.css" />
+		  
+		<!-- datepicker -->
+            <link rel="stylesheet" href="src/lib/timepicker/css/bootstrap-timepicker.css" />
+		<!-- datepicker -->
+		<!-- smoke_js -->
+		<link rel="stylesheet" href="src/img/font-awesome/css/font-awesome.min.css" />
+
+		<!-- main styles -->
+		<link rel="stylesheet" href="src/css/style.css" />
+		<!-- theme color-->
+		<link rel="stylesheet" href="src/css/blue.css" id="link_theme" />
+
+		<!--[if lte IE 8]>
+		<link rel="stylesheet" href="css/ie.css" />
+		<![endif]-->
+
+		<!--[if lt IE 9]>
+		<script src="js/ie/html5.js"></script>
+		<script src="js/ie/respond.min.js"></script>
+		<script src="lib/flot/excanvas.min.js"></script>
+		<![endif]-->
+
+		<script src="src/js/angular.min.js"></script>
+		<script src="src/js/angular-resource.min.js"></script>
+		<script src="src/js/angular-cookies.min.js"></script>
+	
+		<script src="src/app.js"></script>
+		<script src="src/services.js"></script>
+		<script src="src/controllers/IdiomaController.js"></script>
+		<script src="src/controllers/DashboardController.js"></script>
+		<script src="src/controllers/BusquedaController.js"></script>
+		<script src="src/controllers/AltaController.js"></script>
+		<script src="src/controllers/ExportarImportarController.js"></script>
+		<script src="src/controllers/PadronController.js"></script>
+		<script src="src/controllers/PendienteEnviosController.js"></script>
+		<script src="src/controllers/LoginController.js"></script>		
+	</head>
+	<body class="full_width">
+
+		<div id="maincontainer" class="clearfix">
+			<header>
+				<div class="header">
+					<img src="img/mercosulp.png" />
+				</div>
+				<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+					<div class="navbar-inner">
+						<div class="container">
+
+							<ul class="nav navbar-nav" id="mobile-nav">
+
+								<li class="dropdown">
+									<a data-toggle="dropdown" class="dropdown-toggle" href="#"><span class="glyphicon glyphicon-th"></span> Empadronamiento <b class="caret"></b></a>
+									<ul class="dropdown-menu">
+										<li>
+											<a href="siaci.html#/busqueda">Busqueda</a>
+										</li>
+										<li ng-show="isUserInRole('USER_G')">
+											<a href="siaci.html#/alta">Alta</a>
+										</li>
+										<li>
+											<a href="siaci.html#/busqueda">Modificacion Online</a>
+										</li>
+										<li>
+											<a href="siaci.html#/exportarImportar"> Exportar / Importar</a>
+										</li>
+
+										<li >
+											<a href="siaci.html#/busqueda">Aprobar Alta </a>
+
+										</li>
+										<li class="dropdown">
+											<a href="#"> Reportes <b class="caret-right"></b></a>
+											<ul class="dropdown-menu">
+												<li>
+													<a href="siaci.html#/padron">Padron</a>
+												</li>
+												<li>
+													<a href="repo_mod.html">Modificacion</a>
+												</li>
+												<li>
+													<a href="repo_empadronamieto.html">Empadronamiento</a>
+												</li>
+											</ul>
+										</li>
+
+										<li >
+											<a href="siaci.html#/pendienteEnvios">Envio pendientes</a>
+
+										</li>
+
+									</ul>
+								</li>
+
+							</ul>
+							<ul class="nav navbar-nav user_menu pull-right" ng-controller="IdiomaController">
+
+								<li class="divider-vertical hidden-sm hidden-xs"></li>
+								<li class="dropdown">
+									<a href="#" class="dropdown-toggle nav_condensed" data-toggle="dropdown"><i class="flag-ar"></i> <b class="caret"></b></a>
+									<ul class="dropdown-menu">
+										<li>
+											<a href="#" ng-click="changeIdioma()" class="flag-br"></i> Portugues</a>
+										</li>
+
+									</ul>
+								</li>
+								<li class="divider-vertical hidden-sm hidden-xs"></li>
+								<li class="dropdown">
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="src/img/user_avatar.png" alt="" class="user_avatar">Usuario <b class="caret"></b></a>
+									<ul class="dropdown-menu">
+
+										<li>
+											<a href="index.html#/login">Salir</a>
+										</li>
+									</ul>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</nav>
+
+			</header>
+
+			<div ng-view>
+
+			</div>
+
+
+			    <script src="src/js/jquery.min.js"></script>
+    <script src="src/js/jquery-migrate.min.js"></script>
+    <script src="src/lib/jquery-ui/jquery-ui-1.10.0.custom.min.js"></script>
+    <!-- touch events for jquery ui-->
+	<script src="src/js/forms/jquery.ui.touch-punch.min.js"></script>
+    <!-- easing plugin -->
+	<script src="src/js/jquery.easing.1.3.min.js"></script>
+    <!-- smart resize event -->
+	<script src="src/js/jquery.debouncedresize.min.js"></script>
+    <!-- js cookie plugin -->
+	<script src="src/js/jquery_cookie_min.js"></script>
+    <!-- main bootstrap js -->
+	<script src="src/bootstrap/js/bootstrap.min.js"></script>
+    <!-- bootstrap plugins -->
+	<script src="src/js/bootstrap.plugins.min.js"></script>
+	<!-- typeahead -->
+
+   
+    <!-- tooltips -->
+	<script src="src/lib/qtip2/jquery.qtip.min.js"></script>
+    <!-- lightbox -->
+	<script src="src/lib/colorbox/jquery.colorbox.min.js"></script>
+    <!-- jBreadcrumbs -->
+	<script src="src/lib/jBreadcrumbs/js/jquery.jBreadCrumb.1.1.min.js"></script>
+	<!-- hidden elements width/height -->
+	<script src="src/js/jquery.actual.min.js"></script>
+	<!-- custom scrollbar -->
+	<script src="src/lib/slimScroll/jquery.slimscroll.js"></script>
+	<!-- fix for ios orientation change -->
+	<script src="src/js/ios-orientationchange-fix.js"></script>
+	<!-- to top -->
+	<script src="src/lib/UItoTop/jquery.ui.totop.min.js"></script>
+	<!-- mobile nav -->
+	<script src="src/js/selectNav.js"></script>
+
+		
+	<!-- globalize for jQuery UI-->
+    <script src="src/lib/jquery-ui/external/globalize.js"></script>
+    <!-- masked inputs -->
+	<script src="src/js/forms/jquery.inputmask.min.js"></script>
+	<!-- autosize textareas -->
+	<script src="src/js/forms/jquery.autosize.min.js"></script>
+	<!-- textarea limiter/counter -->
+	<script src="src/js/forms/jquery.counter.min.js"></script>
+	<!-- datepicker -->
+	<script src="src/lib/datepicker/bootstrap-datepicker.min.js"></script>
+	<script src="src/lib/datepicker/locales/bootstrap-datepicker.es.js"></script>
+	<script src="src/lib/datepicker/locales/bootstrap-datepicker.pt.js"></script>
+	<!-- timepicker -->
+	<script src="src/lib/timepicker/js/bootstrap-timepicker.min.js"></script>
+	<!-- tag handler -->
+	<script src="src/lib/tag_handler/jquery.taghandler.min.js"></script>
+	<!-- styled form elements -->
+	<script src="src/lib/uniform/jquery.uniform.min.js"></script>
+	<!-- animated progressbars -->
+	<script src="src/js/forms/jquery.progressbar.anim.js"></script>
+	<!-- multiselect -->
+	<script src="src/lib/multi-select/js/jquery.multi-select.js"></script>
+	<script src="src/lib/multi-select/js/jquery.quicksearch.js"></script>
+	<!-- enhanced select (chosen) -->
+	<script src="src/lib/chosen/chosen.jquery.min.js"></script>
+	<!-- TinyMce WYSIWG editor -->
+	<script src="src/lib/tiny_mce/jquery.tinymce.js"></script>
+    <!-- plupload and all it's runtimes and the jQuery queue widget (attachments) -->
+    <script type="text/javascript" src="src/lib/plupload/js/plupload.full.js"></script>
+    <script type="text/javascript" src="src/lib/plupload/js/jquery.plupload.queue/jquery.plupload.queue.full.js"></script>
+	<!-- colorpicker -->
+	<script src="src/lib/colorpicker/bootstrap-colorpicker.js"></script>
+	<!-- password strength checker -->
+	<script src="src/lib/complexify/jquery.complexify.min.js"></script>
+	
+    <!-- form functions -->
+	<script src="src/js/gebo_forms.js"></script>
+		<!-- datatable -->
+	<script src="src/lib/datatables/jquery.dataTables.min.js"></script>
+	<!-- additional sorting for datatables -->
+    <script src="src/lib/datatables/jquery.dataTables.sorting.js"></script>
+		<script src="src/js/gebo_datatables.js"></script>
+    <!-- javascript date tools -->
+	<script src="src/js/date.js"></script>
+
+	
+		</div>
+	</body>
+</html>

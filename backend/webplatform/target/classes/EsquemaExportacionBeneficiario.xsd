@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	elementFormDefault="qualified">
+	<xs:element name="Cabecera">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="Beneficiario" minOccurs="1" maxOccurs="unbounded" />
+			</xs:sequence>
+			<xs:attribute name="CodEnvio" use="required" type="xs:integer" />
+			<xs:attribute name="FechaGene" use="required" type="xs:date" />
+			<xs:attribute name="PaisGestor" use="required" type="TipoPais" />
+			<xs:attribute name="PaisPagador" use="required" type="TipoPais" />
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Beneficiario">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="PersonaFisica" minOccurs="1" maxOccurs="1" />
+				<xs:element ref="Domicilio" minOccurs="1" maxOccurs="1" />
+				<xs:element ref="BeneficiosSolicitados" minOccurs="0"
+					maxOccurs="unbounded" />
+				<xs:element ref="Documentos" minOccurs="1" maxOccurs="unbounded" />
+				<xs:element ref="RespuestaVerificacionAlta" minOccurs="0"
+					maxOccurs="1"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="RespuestaVerificacionAlta">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="EstadoVerificacion" type="xs:integer" />
+				<xs:element name="MotivoRechazo" type="xs:string" />				
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="PersonaFisica">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="CodRegistro" type="xs:integer" />
+				<xs:element name="NroPadron" type="xs:integer" />
+				<xs:element name="ApellidoMaterno" type="PFApellidoM" />
+				<xs:element name="NombreMadre" type="PFNombreP" />
+				<xs:element name="ApellidoPaterno" type="PFApellidoP" />
+				<xs:element name="NombrePadre" type="PFNombreP" />
+				<xs:element name="Nombre" type="PFNombre" />
+				<xs:element name="Nacionalidad" type="TipoPais" />
+				<xs:element name="FechaNacimiento" type="xs:date" />
+				<xs:element name="FechaFallecimiento" type="xs:date" />
+				<xs:element name="Sexo" type="TipoSexo" />
+				<xs:element name="EstadoCivil" type="TipoEstadoCivil" />
+				<xs:element name="EstadoBeneficiario" type="TipoEstadoBeneficiarioAlta" />
+				<xs:element name="FechaEstado" type="xs:date" />
+				<xs:element name="MotivoEstado" type="xs:string" />	
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Domicilio">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Calle" type="DomCalle" />
+				<xs:element name="Numero" type="DomNumero" />
+				<xs:element name="Piso" type="DomPiso" />
+				<xs:element name="Departamento" type="DomDpto" />
+				<xs:element name="CodigoPostal" type="DomCodPostal" />
+				<xs:element name="Localidad" type="DomLocProv" />
+				<xs:element name="ProvinciaEstadoDepartamento" type="DomLocProv" />
+				<xs:element name="Telefono" type="DomTelefono" />
+				<xs:element name="CorreoElectronico" type="DomMail" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="BeneficiosSolicitados">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="Beneficio" minOccurs="0" maxOccurs="unbounded" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Beneficio">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="PaisPrestacion" type="TipoPais" />
+				<xs:element name="TipoPrestacion" type="TipoPrestacion" />
+				<xs:element name="IdentPrestacion" type="xs:string" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Documentos">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="Documento" minOccurs="0" maxOccurs="unbounded" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Documento">
+		<xs:complexType>
+			<xs:sequence>
+			    <xs:element name="CodRegistro" type="xs:integer" />
+				<xs:element name="PaisOrigenDocumento" type="TipoPais" />
+				<xs:element name="TipoDocumento" type="TipoDocumento" />
+				<xs:element name="NumeroDocumento" type="DocNumero" />
+				<xs:element name="FechaEmision" type="xs:date" minOccurs="0"
+					maxOccurs="1" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:simpleType name="TipoPais">
+		<xs:restriction base="xs:integer">
+			<xs:enumeration value="1" />
+			<xs:enumeration value="2" />
+			<xs:enumeration value="3" />
+			<xs:enumeration value="4" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="TipoSexo">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="F" />
+			<xs:enumeration value="M" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="TipoEstadoCivil">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="S" />
+			<xs:enumeration value="C" />
+			<xs:enumeration value="V" />
+			<xs:enumeration value="D" />
+			<xs:enumeration value="P" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="TipoEstadoBeneficiarioAlta">
+		<xs:restriction base="xs:integer">
+			<xs:pattern value="2" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="TipoEstadoBeneficiario">
+		<xs:restriction base="xs:integer">
+			<xs:enumeration value="1" />
+			<xs:enumeration value="2" />
+			<xs:enumeration value="3" />
+			<xs:enumeration value="5" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="TipoPrestacion">
+		<xs:restriction base="xs:integer">
+			<xs:enumeration value="1" />
+			<xs:enumeration value="2" />
+			<xs:enumeration value="3" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="TipoDocumento">
+		<xs:restriction base="xs:integer">
+			<xs:enumeration value="1" />
+			<xs:enumeration value="2" />
+			<xs:enumeration value="3" />
+			<xs:enumeration value="4" />
+			<xs:enumeration value="5" />
+			<xs:enumeration value="6" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="PFNombre">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1" />
+			<xs:maxLength value="100" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="PFNombreP">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0" />
+			<xs:maxLength value="100" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="PFApellidoP">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1" />
+			<xs:maxLength value="70" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="PFApellidoM">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0" />
+			<xs:maxLength value="70" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="DomCalle">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1" />
+			<xs:maxLength value="40" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="DomNumero">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1" />
+			<xs:maxLength value="10" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="DomPiso">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0" />
+			<xs:maxLength value="5" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="DomDpto">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0" />
+			<xs:maxLength value="10" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="DomCodPostal">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1" />
+			<xs:maxLength value="100" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="DomLocProv">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1" />
+			<xs:maxLength value="30" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="DomTelefono">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0" />
+			<xs:maxLength value="20" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="DomMail">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0" />
+			<xs:maxLength value="50" />
+			<xs:pattern value="(|([^@]+@[^\.]+\..+))" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="DocNumero">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1" />
+			<xs:maxLength value="20" />
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

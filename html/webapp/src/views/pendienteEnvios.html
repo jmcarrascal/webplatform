@@ -1,0 +1,185 @@
+
+				<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+					<div class="navbar-inner">
+						
+
+							<ul class="nav navbar-nav" id="mobile-nav">
+
+								<li class="dropdown">
+									<a data-toggle="dropdown" class="dropdown-toggle" href="#"><span class="glyphicon glyphicon-th"></span> {{i18n.registration}} <b class="caret"></b></a>
+									<ul class="dropdown-menu">
+										<li>
+											<a href="index.html#/busqueda">{{i18n.search}}</a>
+										</li>
+										<li ng-show="isUserInRole('USER_G')">
+											<a href="index.html#/alta">{{i18n.add}}</a>
+										</li>
+										<li>
+											<a href="index.html#/busqueda">{{i18n.modification}} {{i18n.online}}</a>
+										</li>
+										<li>
+											<a href="index.html#/exportarImportar"> {{i18n.export}} / {{i18n.import}}</a>
+										</li>
+
+										<li >
+											<a href="index.html#/busqueda">{{i18n.approve}} {{i18n.add}} </a>
+
+										</li>
+										<li class="dropdown">
+											<a href="#"> {{i18n.reports}} <b class="caret-right"></b></a>
+											<ul class="dropdown-menu">
+												<li>
+													<a href="index.html#/padron">{{i18n.census}}�n</a>
+												</li>
+												<li>
+													<a href="repo_mod.html">{{i18n.modification}}</a>
+												</li>
+												<li>
+													<a href="repo_empadronamieto.html">{{i18n.registration}}</a>
+												</li>
+											</ul>
+										</li>
+
+										<li >
+											<a href="index.html#/pendienteEnvios">{{i18n.shippingEarrings}}</a>
+
+										</li>
+
+									</ul>
+								</li>
+
+							</ul>
+							   <ul class="nav navbar-nav user_menu pull-right" ng-controller="IdiomaController">
+
+								<li class="divider-vertical hidden-sm hidden-xs"></li>
+								<li class="dropdown">
+									<a href="#" class="dropdown-toggle nav_condensed" data-toggle="dropdown"><i class="{{defaultLanguage.flag}}"></i> <b class="caret"></b></a>
+									<ul class="dropdown-menu" ng-repeat="lang in othersLanguages">
+										<li>
+											<a ng-click="changeLanguage(lang.abrev)"><i class="{{lang.flag}}"></i> {{lang.tag}}</a>
+										</li>
+									</ul>
+								</li>
+								<li class="divider-vertical hidden-sm hidden-xs"></li>
+								<li class="dropdown">
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="src/img/user_avatar.png" alt="" class="user_avatar">{{i18n.user}} <b class="caret"></b></a>
+									<ul class="dropdown-menu">
+
+										<li>
+											<a href="index.html#/login">{{i18n.logout}}</a>
+										</li>
+									</ul>
+								</li>
+							</ul>
+						</div>
+					
+				</nav>
+
+	
+	<div id="contentwrapper">
+				<div class="main_content">
+					<div id="jCrumbs" class="breadCrumb module">
+						<ul>
+							<li>
+								<a href="#"><i class="glyphicon glyphicon-home"></i></a>
+							</li>
+							<li>
+								<a href="#">{{i18n.home}}</a>
+							</li>
+							<li>
+								<a href="#">{{i18n.registration}}</a>
+							</li>
+							<li>
+								<a href="#">{{i18n.shippingEarrings}}</a>
+							</li>
+
+						</ul>
+					</div>
+					<div class="row ">
+					
+						<div class="col-sm-12 col-md-12 ">
+
+							<h3 class="heading">{{i18n.shippingEarrings}}</h3>
+							<div class="col-sm-12 col-md-12">
+					            <div class="alert alert-danger " style="display:none">
+					                <a class="close" onclick="$('.alert-danger').hide()">�</a>
+					                <strong>Error</strong> {{error.result}}
+					            </div>
+					            <div class="alert alert-success alert-dismissable" style="display:none">
+					                <a class="close" onclick="$('.alert-success').hide()">�</a>
+					                <strong>{{i18n.correctDispatch}}</strong> {{success.result}}
+					            </div>
+			   				</div>
+
+							<form class="form_validation_reg">
+							
+							<div class="formSep">
+									<div class="row">
+										<div class="col-sm-4 col-md-4">
+											<label>{{i18n.selectTypeActionSearch}}</label>
+
+											<label class="radio">
+												<input type="radio" name="tipoOperacionRadio" id="tipoOperacionRadio1" value="ALTA" ng-model="tipoOperacion">
+												{{i18n.add}} </label>
+											<label class="radio">
+												<input type="radio" name="tipoOperacionRadio" id="tipoOperacionRadio2" value="MODIFICACION" ng-model="tipoOperacion">
+												{{i18n.modification}} </label>
+												<label class="radio">
+												<input type="radio" name="tipoOperacionRadio" id="tipoOperacionRadio2" value="APROBAR_ALTA" ng-model="tipoOperacion">
+												{{i18n.approve}} {{i18n.add}} </label>
+
+										</div>
+										
+									</div>
+								</div>
+								<div class="formSep">
+									<div class="row">
+										<div class="col-sm-4 col-md-4">
+											<label>{{i18n.selectSearchType}}</label>
+											<label class="radio">
+												<input type="radio" name="tipoBusquedaRadio" id="tipoBusquedaRadio1" value="oiss" ng-model="tipoBusqueda">{{i18n.oiss}} </label>
+											<label class="radio">
+												<input type="radio" name="tipoBusquedaRadio" id="tipoBusquedaRadio2" value="pais" ng-model="tipoBusqueda">{{i18n.country}} </label>
+										</div>
+										<div class="col-sm-3 col-md-3" ng-show="tipoBusqueda == 'pais'">
+											<label>{{i18n.country}} <span class="f_req">*</span></label>
+											<select class="form-control" ng-model="pais" ng-options="p.id as p.descripcion for p in paisPagadorList"
+													ng-required="tipoBusqueda == 'pais'" ng-disabled="tipoBusqueda != 'pais'">
+											</select>
+										</div>
+
+									</div>
+								</div>
+
+								<br/>
+								<div class="form-actions">
+									<button class="btn btn-success" type="submit" ng-click="buscar()"
+											ng-disabled="!tipoBusqueda || !tipoOperacion || ( tipoBusqueda == 'pais' && !pais)">
+										{{i18n.searchFor}}
+									</button>
+									<button class="btn btn-default" ng-click="cancelar()">
+										{{i18n.cancel}}
+									</button>
+								</div>
+
+							</form>
+
+						</div>
+					</div>
+					<br/>
+
+					<div id="divResultados" class="row" style="display:none">
+						<div class="col-sm-12 col-md-12">
+							<h3 class="heading">{{i18n.searchResults}}</h3>
+							<table class="table table-striped table-bordered dTableR" id="dt_a">
+							</table>
+							<br/>
+							<div class="form-actions">
+								<button class="btn btn-success" type="submit" ng-click="enviar()">
+									{{i18n.send}}
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>

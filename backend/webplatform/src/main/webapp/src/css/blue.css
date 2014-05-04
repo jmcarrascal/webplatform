@@ -1,0 +1,46 @@
+/* ---- Gebo Admin blue theme ---- */
+
+    .navbar-inner {
+        background-image: url('../img/bg-menu.png');
+		background-repeat:repeat;
+		height:30px;
+		position: absolute;
+		width: 100%;
+		
+     
+    }
+    .navbar .nav .active > a, .navbar .nav .active > a:hover {
+        background: #629962 !important;
+    }
+    .navbar .divider-vertical {
+        border-left-color:#629962;
+        border-right-color:#629962;
+    }
+    .dropdown-menu li > a:hover, .dropdown-menu .active > a,
+	.dropdown-menu .active > a:hover,
+    .nav-list > .active > a, .nav-list > .active > a:hover,
+    span.dynatree-active a {
+        background: #629962 !important;
+    }
+	
+	.table thead th {background-color:#669966 !important;
+	  }
+	.dataTables_wrapper th.sorting_asc,.dataTables_wrapper th.sorting_desc {background-color:#629962 !important}
+	.odd {
+		background-color: #F1F9E3;
+	}
+
+.header{
+	
+	background-color:#FFFFFF;
+	background-position: left top;
+    background-repeat: repeat;
+    height: 70px;
+    position: relative;
+    width: 100%;
+}
+
+.header img{
+	margin-left:10px;
+	margin-top: 5px;
+}

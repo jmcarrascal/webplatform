@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Cabecera CodEnvio="1" FechaGene="2013-10-29" PaisGestor="2">
+    <Beneficiario>
+        <PersonaFisica>
+            <ApellidoMaterno>Rodriguez</ApellidoMaterno>
+            <NombreMadre>María</NombreMadre>
+            <ApellidoPaterno>CHAVEZ</ApellidoPaterno>
+            <NombrePadre></NombrePadre>
+            <Nombre>Mariana</Nombre>
+            <Nacionalidad>3</Nacionalidad>
+            <FechaNacimiento>1956-02-05</FechaNacimiento>
+            <Sexo>F</Sexo>
+            <EstadoCivil>C</EstadoCivil>
+            <EstadoBeneficiario>2</EstadoBeneficiario>
+            <FechaEstado>2013-11-01</FechaEstado>
+        </PersonaFisica>
+        <Domicilio>
+            <Calle>R. Ferreira Viana</Calle>
+            <Numero>350</Numero>
+   		    <Piso></Piso>
+			<Departamento></Departamento>
+		    <CodigoPostal>22221</CodigoPostal>
+            <Localidad>rio janeiro</Localidad>
+            <ProvinciaEstadoDepartamento>rio janeiro</ProvinciaEstadoDepartamento>
+            <Telefono></Telefono>
+            <CorreoElectronico>mariana@gmail.com</CorreoElectronico>
+        </Domicilio>
+        <BeneficiosSolicitados/>	
+        <Documentos>   
+			<Documento>
+                <PaisOrigenDocumento>4</PaisOrigenDocumento>
+                <TipoDocumento>4</TipoDocumento>
+                <NumeroDocumento>12558963</NumeroDocumento>
+                <!--FechaEmision></FechaEmision-->
+            </Documento>
+        </Documentos>
+    </Beneficiario>	
+</Cabecera>

@@ -1,0 +1,194 @@
+
+				<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+					<div class="navbar-inner">
+						
+
+							<ul class="nav navbar-nav" id="mobile-nav">
+
+								<li class="dropdown">
+									<a data-toggle="dropdown" class="dropdown-toggle" href="#"><span class="glyphicon glyphicon-th"></span> {{i18n.registration}} <b class="caret"></b></a>
+									<ul class="dropdown-menu">
+										<li>
+											<a href="index.html#/busqueda">{{i18n.search}}</a>
+										</li>
+										<li ng-show="isUserInRole('USER_G')">
+											<a href="index.html#/alta">{{i18n.add}}</a>
+										</li>
+										<li>
+											<a href="index.html#/busqueda">{{i18n.modification}} {{i18n.online}}</a>
+										</li>
+										<li>
+											<a href="index.html#/exportarImportar"> {{i18n.export}} / {{i18n.import}}</a>
+										</li>
+
+										<li >
+											<a href="index.html#/busqueda">{{i18n.approve}} {{i18n.add}} </a>
+
+										</li>
+										<li class="dropdown">
+											<a href="#"> {{i18n.reports}} <b class="caret-right"></b></a>
+											<ul class="dropdown-menu">
+												<li>
+													<a href="index.html#/padron">{{i18n.census}}</a>
+												</li>
+												<li>
+													<a href="repo_mod.html">{{i18n.modification}}</a>
+												</li>
+												<li>
+													<a href="repo_empadronamieto.html">{{i18n.registration}}</a>
+												</li>
+											</ul>
+										</li>
+
+										<li >
+											<a href="index.html#/pendienteEnvios">{{i18n.shippingEarrings}}</a>
+
+										</li>
+
+									</ul>
+								</li>
+
+							</ul>
+							<ul class="nav navbar-nav user_menu pull-right" ng-controller="IdiomaController">
+
+								<li class="divider-vertical hidden-sm hidden-xs"></li>
+								<li class="dropdown">
+									<a href="#" class="dropdown-toggle nav_condensed" data-toggle="dropdown"><i class="{{defaultLanguage.flag}}"></i> <b class="caret"></b></a>
+									<ul class="dropdown-menu" ng-repeat="lang in othersLanguages">
+										<li>
+											<a ng-click="changeLanguage(lang.abrev)"><i class="{{lang.flag}}"></i> {{lang.tag}}</a>
+										</li>
+
+									</ul>
+								</li>
+								<li class="divider-vertical hidden-sm hidden-xs"></li>
+								<li class="dropdown">
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="src/img/user_avatar.png" alt="" class="user_avatar">{{i18n.user}} <b class="caret"></b></a>
+									<ul class="dropdown-menu">
+										<li>
+											<a href="index.html#/login">{{i18n.logout}}</a>
+										</li>
+									</ul>
+								</li>
+							</ul>
+						</div>
+					
+				</nav>
+
+	
+		<div id="contentwrapper">
+				<div class="main_content">
+					<div id="jCrumbs" class="breadCrumb module">
+						<ul>
+							<li>
+								<a href="#"><i class="glyphicon glyphicon-home"></i></a>
+							</li>
+							<li>
+								<a href="#">{{i18n.home}}</a>
+							</li>
+							<li>
+								<a href="#">{{i18n.registration}}</a>
+							</li>
+							<li>
+								<a href="#">{{i18n.padronReport}}</a>
+							</li>
+
+						</ul>
+					</div>
+					<div class="row ">
+						<div class="col-sm-12 col-md-12 ">
+
+							<h3 class="heading">{{i18n.census}} </h3>
+
+							<form class="form_validation_reg">
+								<div class="formSep">
+									<div class="row">
+										<div class="col-sm-6 col-md-6">
+											<label>{{i18n.status}} {{i18n.benefit}} </label>
+											<select class="form-control" >
+												<option>Argentina</option>
+												<option>Brasil</option>
+												<option>Paraguay</option>
+
+											</select>
+										</div>
+										<div class="col-sm-6 col-md-6">
+											<label>{{i18n.status}} {{i18n.beneficiary}} </label>
+										<select class="form-control" >
+												<option>Argentina</option>
+												<option>Brasil</option>
+												<option>Paraguay</option>
+
+											</select>
+
+										</div>
+										
+
+									</div>
+								</div>
+
+								<div class="formSep">
+									<div class="row">
+
+										<div class="col-sm-6 col-md-6">
+											<label>{{i18n.dateEntryFrom}} </label>
+											<div class="input-group date" id="fechaAltaD" data-date-format="dd/mm/yyyy">
+									<input class="form-control" readonly="" type="text">
+									<span class="input-group-addon"><i class="splashy-calendar_day"></i></span>
+								</div>
+
+										</div>
+										<div class="col-sm-6 col-md-6">
+											<label>{{i18n.dateEntryTo}} </label>
+
+											<div class="input-group date" id="fechaAltaH" data-date-format="dd/mm/yyyy">
+									<input class="form-control" readonly="" type="text">
+									<span class="input-group-addon"><i class="splashy-calendar_day"></i></span>
+								</div>
+										
+
+									</div>
+
+								</div>
+								<div class="formSep">
+									<div class="row">
+
+										<div class="col-sm-6 col-md-6">
+											<label>{{i18n.liquidationDateFrom}} </label>
+											<div class="input-group date" id="fechaLiqD" data-date-format="dd/mm/yyyy">
+									<input class="form-control" readonly="" type="text">
+									<span class="input-group-addon"><i class="splashy-calendar_day"></i></span>
+								</div>
+
+										</div>
+										<div class="col-sm-6 col-md-6">
+											<label>{{i18n.liquidationDateTo}} </label>
+
+										<div class="input-group date" id="fechaLiqH" data-date-format="dd/mm/yyyy">
+									<input class="form-control" readonly="" type="text">
+									<span class="input-group-addon"><i class="splashy-calendar_day"></i></span>
+								</div>
+										</div>
+
+									</div>
+
+								</div>
+
+								<div class="form-actions">
+									<button class="btn btn-success" type="submit">
+										{{i18n.searchFor}}
+									</button>
+									<button class="btn btn-default">
+										{{i18n.cancel}}
+									</button>
+								</div>
+							</form>
+
+						</div>
+					</div>
+
+					<br/>
+
+				</div>
+			</div>
+		</div>
